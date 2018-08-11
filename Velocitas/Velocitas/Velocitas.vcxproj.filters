@@ -25,6 +25,12 @@
     <Filter Include="Framework\Sprite">
       <UniqueIdentifier>{302c71aa-de2d-497e-887a-86edcad4da6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Sound">
+      <UniqueIdentifier>{c65d0940-3307-481e-9f1b-53a41daf60a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Scene">
+      <UniqueIdentifier>{b3074ea2-686f-4628-9445-13ffef0b399a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -42,6 +48,15 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Framework\Sprite</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>Framework\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Input.h">
@@ -55,6 +70,18 @@
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>Framework\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
