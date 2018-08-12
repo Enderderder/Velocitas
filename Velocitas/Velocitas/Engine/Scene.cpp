@@ -18,22 +18,22 @@
 // Local Include
 #include "Utility.h"
 #include "GameObject.h"
-#include "Player.h"
-#include "PowerUps.h"
-#include "AssetMgr.h"
-#include "MeshMgr.h"
-#include "ModelMgr.h"
-#include "SceneMgr.h"
-#include "Input.h"
-#include "Camera.h"
-#include "CAIMgr.h"
-#include "CubeMap.h"
-#include "TextLabel.h"
+//#include "Player.h"
+//#include "PowerUps.h"
+//#include "AssetMgr.h"
+//#include "MeshMgr.h"
+//#include "ModelMgr.h"
+//#include "SceneMgr.h"
+//#include "Input.h"
+//#include "Camera.h"
+//#include "CAIMgr.h"
+//#include "CubeMap.h"
+//#include "TextLabel.h"
 
 // Manager Pointer
-static CAssetMgr* cAssetMgr = CAssetMgr::GetInstance();
-static CModelMgr* cModelMgr = CModelMgr::GetInstance();
-static CMeshMgr* cMeshMgr = CMeshMgr::GetInstance();
+//static CAssetMgr* cAssetMgr = CAssetMgr::GetInstance();
+//static CModelMgr* cModelMgr = CModelMgr::GetInstance();
+//static CMeshMgr* cMeshMgr = CMeshMgr::GetInstance();
 
 CScene::CScene()
 {
@@ -73,112 +73,12 @@ CScene::~CScene()
 
 void CScene::InitialiseScene(ESCENES _eSceneNum)
 {
-	m_MainCamera = new CCamera();
 
-	switch (_eSceneNum)
-	{
-	case GAME: break;
-
-	case MULTIPLAYER:
-	{
-		////==========================================
-		//std::cout << "Multiplayer Initializing... \n";
-		////==========================================
-
-		//
-
-		//// Load in the cube map
-		//m_cCubeMap = cMeshMgr->GetCubeMap(GAMECUBEMAP);
-
-		//// Load in the game objects
-		//CGameObject* player = new CPlayer(cModelMgr->GetMesh(TANK), cAssetMgr->GetProgramID("ModelBlinnPhong"));
-		//Instantiate(player, glm::vec3(0.0f, 0.0f, 0.0f));
-		//std::cout << "Loaded GameObject: Player" << std::endl;
-		//m_player = player;
-
-		//CGameObject* platform = new CGameObject(cMeshMgr->GetMesh(CUBE), cAssetMgr->GetTextureID("STONE"),
-		//cAssetMgr->GetProgramID("BlinnPhong"));
-		//Instantiate(platform, glm::vec3(0.0f, -0.1f, 0.0f), glm::vec3(40.0f, 0.1f, 40.0f));
-		//std::cout << "Loaded GameObject: Platform" << std::endl;
-
-		//t1 = std::chrono::high_resolution_clock::now();
-		//tPowerUp1 = std::chrono::high_resolution_clock::now();
-		////==========================================
-		//std::cout << "Initializing Done... \n";
-		////==========================================
-
-		break;
-	}
-
-	case MAINMENU:
-	{
-
-		//==========================================
-		std::cout << "Menu Initializing... \n";
-		//==========================================
-
-		m_cCubeMap = cMeshMgr->GetCubeMap(MENUCUBEMAP);
-
-		TextTemp = new CTextLabel("Arial", "Play", glm::vec2(util::SCR_WIDTH/2, util::SCR_HEIGHT / 2));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Multiplayer", glm::vec2(util::SCR_WIDTH / 2, util::SCR_HEIGHT / 2 - 100));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Exit", glm::vec2(util::SCR_WIDTH / 2, util::SCR_HEIGHT / 2 - 200));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Space to Enter", glm::vec2(util::SCR_WIDTH / 8, util::SCR_HEIGHT / 2));
-		m_pText.push_back(TextTemp);
-
-		//==========================================
-		std::cout << "Initializing Done... \n";
-		//==========================================
-
-		break;
-	}
-
-	case MULTIPLAYERMENU:
-	{
-		m_cCubeMap = cMeshMgr->GetCubeMap(MENUCUBEMAP);
-
-		TextTemp = new CTextLabel("Arial", "Host Game", glm::vec2(util::SCR_WIDTH / 2, util::SCR_HEIGHT / 2));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Join Game", glm::vec2(util::SCR_WIDTH / 2, util::SCR_HEIGHT / 2 - 100));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Main Menu", glm::vec2(util::SCR_WIDTH / 2, util::SCR_HEIGHT / 2 - 200));
-		m_pText.push_back(TextTemp);
-
-		break;
-	}
-
-	case LOBBY: break;
-
-	case GAMEOVER:
-	{
-		m_cCubeMap = cMeshMgr->GetCubeMap(GAMECUBEMAP);
-
-		TextTemp = new CTextLabel("Arial", "Restart", glm::vec2(util::SCR_WIDTH / 2- 200, util::SCR_HEIGHT / 2));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Return to Main Menu", glm::vec2(util::SCR_WIDTH / 2 - 200, util::SCR_HEIGHT / 2 - 100));
-		m_pText.push_back(TextTemp);
-
-		TextTemp = new CTextLabel("Arial", "Space to Enter", glm::vec2(util::SCR_WIDTH / 8, util::SCR_HEIGHT / 2));
-		m_pText.push_back(TextTemp);
-
-		break;
-	}
-
-	default: break;
-	}
 }
 
 void CScene::RenderScene()
 {
-	m_cCubeMap->Render(m_MainCamera);
+	//m_cCubeMap->Render(m_MainCamera);
 
 	for (auto obj : m_vGameObj)
 	{
@@ -186,13 +86,13 @@ void CScene::RenderScene()
 	}
 	for (unsigned int i = 0; i < m_pText.size(); i++)
 	{
-		m_pText[i]->RenderTextLabel();
+		//m_pText[i]->RenderTextLabel();
 	}
 }
 
 void CScene::UpdateScene()
 {
-	m_MainCamera->UpdateCamera();
+	//m_MainCamera->UpdateCamera();
 
 	// Delete the object that should be deleted fron last frame
 	for (auto obj : m_vGameObj)

@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include "Utility.h"
 
 Sprite::Sprite(const char* _filePath)
 {

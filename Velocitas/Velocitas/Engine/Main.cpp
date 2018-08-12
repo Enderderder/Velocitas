@@ -18,11 +18,12 @@
 void InititializeProgram();
 void Render();
 void Update();
-void ResizeWindow(int _width, int _height);
 
 int main(int argc, char **argv)
 {
+	// Set up randon
 	srand((unsigned int)time(NULL));
+
 	// Create the window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA | GL_MULTISAMPLE);
@@ -35,13 +36,12 @@ int main(int argc, char **argv)
 	// Set Clear Screen Color
 	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
 
-									  // Initialize OpenGL Library
+	// Initialize OpenGL Library
 	glewInit();
 	// Initialize the Game
 	InititializeProgram();
 
 	//register callbacks
-	///glutReshapeFunc(ResizeWindow);
 	glutIdleFunc(Update);
 	glutDisplayFunc(Render);
 
@@ -102,9 +102,4 @@ void Update()
 
 	// Goes To Render
 	glutPostRedisplay();
-}
-
-void ResizeWindow(int _width, int _height)
-{
-	glutReshapeWindow(util::SCR_WIDTH, util::SCR_HEIGHT);
 }

@@ -16,7 +16,7 @@
 #include "TextLabel.h"
 
 // Local Include
-#include "AssetMgr.h"
+//#include "AssetMgr.h"
 #include "TextLoader.h"
 
 CTextLabel::CTextLabel(const char* _fontFamily) :

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Util.h"
+#include "Utility.h"
 #include "Camera.h"
 
 class Sprite
