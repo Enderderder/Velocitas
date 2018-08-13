@@ -104,7 +104,7 @@ void CScene::UpdateScene()
 	size_t currVecSize = m_vGameObj.size();
 	for (size_t index = 0; index < currVecSize; ++index)
 	{
-		m_vGameObj[index]->UpdateGameObeject();
+		m_vGameObj[index]->Update();
 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
 	}
 

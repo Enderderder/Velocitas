@@ -1,6 +1,3 @@
-
-
-
 // Global Include
 #include "Utility.h"
 #include "SceneMgr.h"
@@ -13,6 +10,8 @@
 #include "Input.h"
 #include "TextLabel.h"
 
+// GLobal Variables
+float oldTime, newTime;
 
 
 void InititializeProgram();
@@ -60,6 +59,9 @@ int main(int argc, char **argv)
 
 void InititializeProgram()
 {
+	oldTime = glutGet(GLUT_ELAPSED_TIME);
+
+
 	//m_pSound.PlaySound();
 	//cInputMgr->InitializeInput();
 	//CAssetMgr::GetInstance()->InitializeAssets();
@@ -90,8 +92,13 @@ void Render()
 
 void Update()
 {
+	float deltaTime;
+	newTime = glutGet(GLUT_ELAPSED_TIME);
+	deltaTime = newTime - oldTime;
+	oldTime = newTime;
+
 	// Update whats currently running
-	//cSceneMgr->UpdateCurrentScene();
+	//cSceneMgr->UpdateCurrentScene(deltaTime);
 
 	// Full Screen Control
 	//if (cInputMgr->g_cKeyState[(unsigned char)'f'] == INPUT_FIRST_PRESS)

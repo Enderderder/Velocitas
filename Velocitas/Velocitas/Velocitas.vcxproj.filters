@@ -52,6 +52,9 @@
     <Filter Include="Framework\GameObject">
       <UniqueIdentifier>{465ca6d5-bc43-4516-b32b-5f2438ffc557}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\SpaceShip">
+      <UniqueIdentifier>{8d0cdb30-5d53-48e2-bc4b-fa408a80665b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -92,6 +95,7 @@
     <ClInclude Include="Engine\GameObject.h">
       <Filter>Framework\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="SpceShip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -127,6 +131,7 @@
     <ClCompile Include="Engine\GameObject.cpp">
       <Filter>Framework\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="SpceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs">

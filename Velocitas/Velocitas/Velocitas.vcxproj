@@ -33,6 +33,7 @@
     <ClInclude Include="Engine\TextLabel.h" />
     <ClInclude Include="Engine\TextLoader.h" />
     <ClInclude Include="Engine\Utility.h" />
+    <ClInclude Include="SpceShip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp" />
@@ -46,6 +47,7 @@
     <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Engine\TextLabel.cpp" />
     <ClCompile Include="Engine\TextLoader.cpp" />
+    <ClCompile Include="SpceShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs" />

@@ -43,28 +43,11 @@ public:
 	CGameObject(CMesh* _mesh, GLuint _textureID, GLuint _programID);
 	CGameObject(CModel* _model, GLuint _programID);
 	virtual void RenderObject(CCamera* _camera);
-	virtual void UpdateGameObeject() {}
+	virtual void Update() {}
 	virtual void OnCollision(CGameObject* _other) {}
 	void DestroyObject();
 
-	void AddPosition(glm::vec3 _pos);
-	void AddScale(glm::vec3 _scale);
-	void AddRotation(float _rotation);
-
-	void SetPosition(glm::vec3 _pos);
-	void SetPositionX(float _pos);
-	void SetPositionY(float _pos);
-	void SetPositionZ(float _pos);
-	void SetScale(glm::vec3 _scale);
-	void SetScaleX(float _scale);
-	void SetScaleY(float _scale);
-	void SetScaleZ(float _scale);
-	void SetRotation(glm::vec3 _rotation);
-	void SetRotationX(float _rotation);
-	void SetRotationY(float _rotation);
-	void SetRotationZ(float _rotation);
-
-	const char* GetTag() const;
+	std::string GetTag() const;
 	glm::vec3 GetPosition() const;
 	bool HasCollider() const;
 	bool ShouldDestroyed() const;
@@ -79,21 +62,16 @@ protected:
 	glm::vec3 m_Rotation;
 	float m_ColliderRad;
 
-	const char* m_tag;
-
 	bool m_ShouldDestroyed;
 	bool m_HasCollider;
 	bool m_IsModel;
 	
-	std::string tag;
-	std::string name;
+	std::string m_tag;
+	std::string m_name;
 	Transform m_transform;
 
 	GLuint m_ProgramID;
 	GLuint m_TextureID;
-
-	CMesh* m_ObjMesh;
-	CModel* m_ObjModel;
 };
 
 #endif // !GAMEOBJECT_H
