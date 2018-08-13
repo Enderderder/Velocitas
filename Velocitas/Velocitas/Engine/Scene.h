@@ -12,7 +12,6 @@
 #include <memory>
 
 // Forward Declaration
-enum ESCENES;
 class CGameObject;
 class CCamera;
 class CCubeMap;
@@ -22,10 +21,10 @@ class CScene
 {
 public:
 	CScene();
-	CScene(ESCENES _eSceneNum);
+	//CScene(ESCENES _eSceneNum);
 	~CScene();
 
-	virtual void InitialiseScene(ESCENES _eSceneNum);
+	//virtual void InitialiseScene(ESCENES _eSceneNum);
 	virtual void RenderScene();
 	virtual void UpdateScene();
 

@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Camera.h" />
+    <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\SceneMgr.h" />
@@ -35,7 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="Engine\Main.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\SceneMgr.cpp" />
     <ClCompile Include="Engine\ShaderLoader.cpp" />

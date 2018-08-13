@@ -44,8 +44,8 @@ CScene::CScene()
 	m_cCubeMap = nullptr;
 }
 
-CScene::CScene(ESCENES _eSceneNum)
-{}
+// CScene::CScene(ESCENES _eSceneNum)
+// {}
 
 CScene::~CScene()
 {
@@ -71,10 +71,10 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitialiseScene(ESCENES _eSceneNum)
-{
-
-}
+// void CScene::InitialiseScene(ESCENES _eSceneNum)
+// {
+// 
+// }
 
 void CScene::RenderScene()
 {

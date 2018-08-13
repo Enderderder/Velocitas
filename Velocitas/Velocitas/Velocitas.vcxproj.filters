@@ -49,6 +49,9 @@
     <Filter Include="Resources\Shaders\Text">
       <UniqueIdentifier>{eb4317c9-f9ef-447b-8362-87bbdb07e40c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameObject">
+      <UniqueIdentifier>{465ca6d5-bc43-4516-b32b-5f2438ffc557}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -86,6 +89,9 @@
     <ClInclude Include="Engine\TextLabel.h">
       <Filter>Framework\TextLoader</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Framework\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -114,6 +120,12 @@
     </ClCompile>
     <ClCompile Include="Engine\TextLabel.cpp">
       <Filter>Framework\TextLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameObject.cpp">
+      <Filter>Framework\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

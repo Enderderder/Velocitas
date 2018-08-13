@@ -19,9 +19,20 @@
 #include "Utility.h"
 
 // Forward Declare
+class GameObject;
 class CCamera;
 class CMesh;
 class CModel;
+
+// Declare a Transform struct
+struct Transform
+{
+	GameObject* gameObject;
+	glm::vec3 position;
+	glm::vec3 rotation;
+	glm::vec3 scale;
+};
+
 
 class CGameObject
 {
@@ -74,6 +85,10 @@ protected:
 	bool m_HasCollider;
 	bool m_IsModel;
 	
+	std::string tag;
+	std::string name;
+	Transform m_transform;
+
 	GLuint m_ProgramID;
 	GLuint m_TextureID;
 
