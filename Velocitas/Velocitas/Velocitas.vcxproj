@@ -22,33 +22,37 @@
     <Text Include="Engine\Commenting Header.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Component.h" />
     <ClInclude Include="Engine\Camera.h" />
+    <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="Engine\MeshComponent.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\SceneMgr.h" />
     <ClInclude Include="Engine\ShaderLoader.h" />
     <ClInclude Include="Engine\Sound.h" />
     <ClInclude Include="Engine\SpceShip.h" />
     <ClInclude Include="Engine\Sprite.h" />
+    <ClInclude Include="Engine\SpriteRenderComponent.h" />
     <ClInclude Include="Engine\TextLabel.h" />
     <ClInclude Include="Engine\TextLoader.h" />
     <ClInclude Include="Engine\Time.h" />
     <ClInclude Include="Engine\Utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
+    <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
     <ClCompile Include="Engine\Main.cpp" />
+    <ClCompile Include="Engine\MeshComponent.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\SceneMgr.cpp" />
     <ClCompile Include="Engine\ShaderLoader.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\SpceShip.cpp" />
     <ClCompile Include="Engine\Sprite.cpp" />
+    <ClCompile Include="Engine\SpriteRenderComponent.cpp" />
     <ClCompile Include="Engine\TextLabel.cpp" />
     <ClCompile Include="Engine\TextLoader.cpp" />
     <ClCompile Include="Engine\Time.cpp" />
