@@ -48,9 +48,7 @@ public:
 
 	std::string GetTag() const;
 	glm::vec3 GetPosition() const;
-	bool HasCollider() const;
 	bool ShouldDestroyed() const;
-	float GetCollisionRad() const;
 
 protected:
 	void InitializeObject(CMesh* _mesh, GLuint _textureID, GLuint _programID);
@@ -71,6 +69,7 @@ protected:
 
 	GLuint m_ProgramID;
 	GLuint m_TextureID;
+
 };
 
 #endif // !GAMEOBJECT_H

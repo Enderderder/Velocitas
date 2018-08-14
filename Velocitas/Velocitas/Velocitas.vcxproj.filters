@@ -107,6 +107,9 @@
     <ClInclude Include="Engine\Time.h">
       <Filter>Framework\Time</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Framework\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -147,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Time.cpp">
       <Filter>Framework\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Framework\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
