@@ -33,7 +33,6 @@ struct Transform
 	glm::vec3 scale;
 };
 
-
 class CGameObject
 {
 public:

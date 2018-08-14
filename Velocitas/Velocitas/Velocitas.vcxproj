@@ -29,11 +29,12 @@
     <ClInclude Include="Engine\SceneMgr.h" />
     <ClInclude Include="Engine\ShaderLoader.h" />
     <ClInclude Include="Engine\Sound.h" />
+    <ClInclude Include="Engine\SpceShip.h" />
     <ClInclude Include="Engine\Sprite.h" />
     <ClInclude Include="Engine\TextLabel.h" />
     <ClInclude Include="Engine\TextLoader.h" />
+    <ClInclude Include="Engine\Time.h" />
     <ClInclude Include="Engine\Utility.h" />
-    <ClInclude Include="SpceShip.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp" />
@@ -44,10 +45,11 @@
     <ClCompile Include="Engine\SceneMgr.cpp" />
     <ClCompile Include="Engine\ShaderLoader.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
+    <ClCompile Include="Engine\SpceShip.cpp" />
     <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Engine\TextLabel.cpp" />
     <ClCompile Include="Engine\TextLoader.cpp" />
-    <ClCompile Include="SpceShip.cpp" />
+    <ClCompile Include="Engine\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs" />
@@ -109,12 +111,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(IncludePath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(IncludePath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -124,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;freeglut.lib;glew32.lib;SOIL.lib;fmod_vc.lib;freetype.lib;assimp-vc130-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;freeglut.lib;glew32.lib;SOIL.lib;fmod_vc.lib;freetype.lib;assimp-vc130-mtd.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,7 +149,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;freeglut.lib;glew32.lib;SOIL.lib;fmod_vc.lib;freetype.lib;assimp-vc130-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;freeglut.lib;glew32.lib;SOIL.lib;fmod_vc.lib;freetype.lib;assimp-vc130-mtd.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

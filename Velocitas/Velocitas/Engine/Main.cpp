@@ -11,8 +11,7 @@
 #include "TextLabel.h"
 
 // GLobal Variables
-float oldTime, newTime;
-
+static CTime* p_Time = CTime::GetInstance();
 
 void InititializeProgram();
 void Render();
@@ -59,7 +58,7 @@ int main(int argc, char **argv)
 
 void InititializeProgram()
 {
-	oldTime = glutGet(GLUT_ELAPSED_TIME);
+	p_Time->Initialize();
 
 
 	//m_pSound.PlaySound();
@@ -92,13 +91,10 @@ void Render()
 
 void Update()
 {
-	float deltaTime;
-	newTime = glutGet(GLUT_ELAPSED_TIME);
-	deltaTime = newTime - oldTime;
-	oldTime = newTime;
+	p_Time->Update();
 
 	// Update whats currently running
-	//cSceneMgr->UpdateCurrentScene(deltaTime);
+	//cSceneMgr->UpdateCurrentScene();
 
 	// Full Screen Control
 	//if (cInputMgr->g_cKeyState[(unsigned char)'f'] == INPUT_FIRST_PRESS)

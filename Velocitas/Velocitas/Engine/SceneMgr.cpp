@@ -17,8 +17,6 @@
 
 // Local Include
 #include "Utility.h"
-#include "SinglePlayerScene.h"
-#include "LobbyScene.h"
 
 // Static Variable
 CSceneMgr* CSceneMgr::s_pSceneMgr = nullptr;
@@ -43,13 +41,13 @@ void CSceneMgr::InitializeSceneMgr()
 {
 	m_vScenes.push_back(new CScene());
 	m_vScenes.push_back(new CScene());
-	m_vScenes.push_back(new CSinglePlayerScene());
+	//m_vScenes.push_back(new CSinglePlayerScene());
 	m_vScenes.push_back(new CScene());
 	m_vScenes.push_back(new CScene());
-	m_vScenes.push_back(new CLobbyScene());
+	//m_vScenes.push_back(new CLobbyScene());
 
 	m_eCurrentScene = MAINMENU;
-	m_vScenes[m_eCurrentScene]->InitialiseScene(m_eCurrentScene);
+	//m_vScenes[m_eCurrentScene]->InitialiseScene(m_eCurrentScene);
 }
 
 void CSceneMgr::RenderCurrentScene()
@@ -73,7 +71,7 @@ void CSceneMgr::SwapScene(ESCENES _eSceneNum)
 
 	// Jump to another scene and initialise it
 	m_eCurrentScene = _eSceneNum;
-	m_vScenes[m_eCurrentScene]->InitialiseScene(m_eCurrentScene);
+	m_vScenes[m_eCurrentScene]->(m_eCurrentScene);
 }
 
 CScene * CSceneMgr::GetCurrentScene() const
