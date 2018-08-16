@@ -9,7 +9,8 @@
 class CSpriteRenderComponent : public CComponent
 {
 public:
-	CSpriteRenderComponent();
+	CSpriteRenderComponent() = default;
+	CSpriteRenderComponent(CGameObject* _gameObject);
 	~CSpriteRenderComponent();
 };
 
