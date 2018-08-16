@@ -1,11 +1,27 @@
 // This include
 #include "SpriteRenderComponent.h"
 
-CSpriteRenderComponent::CSpriteRenderComponent(CGameObject* _gameObject)
+// Local Include
+#include "GameObject.h"
+
+CSpriteRenderComponent::CSpriteRenderComponent() {}
+
+CSpriteRenderComponent::~CSpriteRenderComponent() {}
+
+void CSpriteRenderComponent::Initialize()
 {
-	this->m_gameObject = _gameObject;
+	__super::Initialize();
+	
+	
 }
 
-CSpriteRenderComponent::~CSpriteRenderComponent()
+void CSpriteRenderComponent::RenderSprite(CCamera* camera)
 {
+	if (this->m_gameObject->IsActive() == false
+		|| m_TextureID == NULL)
+	{
+		return;
+	}
+
+
 }

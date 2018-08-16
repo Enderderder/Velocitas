@@ -2,7 +2,7 @@
 #define GAMEOBJECT_H
 
 // Global Includes
-//#include "Utility.h"
+#include "Utility.h"
 
 // Forward Declare
 class CGameObject;
@@ -41,6 +41,11 @@ public:
 	 * Call every frame
 	 */
 	virtual void Update();
+	/**
+	* Try get the component of the gameobject
+	*/
+	template<typename T>
+	T* GetComponent() const;
 	/*
 	 *Check if the object should be destroyed on thie frame
 	 */
@@ -61,17 +66,18 @@ public:
 
 protected:
 	
-	/* 
-	Initialize the object
-	Call right after the scene initialize
-	*/
+	/**
+	 * Initialize the object
+	 * Call right after the scene initialize
+	 */
 	virtual void InitializeObject();
-	/*
-	Try get the component of the gameobject
-	*/
+	/**
+	 * Creates a component and push to the vector
+	 */
 	template<typename T>
-	T* GetComponent() const;
-
+	T* CreateComponent();
 
 };
+
+
 #endif // !GAMEOBJECT_H

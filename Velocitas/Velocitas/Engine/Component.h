@@ -7,18 +7,19 @@ class CGameObject;
 class CComponent
 {
 public:
-	CComponent() = default;
-	CComponent(CGameObject* _gameObject);
+	CComponent();
 	~CComponent();
-
-	CGameObject* m_gameObject;
 
 protected:
 
+	CGameObject* m_gameObject;
 	bool m_isActive;
 
 // Membre Funciton
 public:
+
+	void SetGameObject(CGameObject* _gameObject);
+	CGameObject* GetGameObject() const;
 
 	virtual void Update() {}
 	virtual void Initialize() {}

@@ -1,23 +1,9 @@
-//
-// Bachelor of Software Engineering
-// Media Design School
-// Auckland
-// New Zealand
-//
-// (c) 2018 Media Design School
-//
-// File Name    : Scene.cpp
-// Description	: 
-// Author       : Richard Wulansari & Jacob Dewse
-// Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
-//
-
 // This Include
 #include "Scene.h"
 
 // Local Include
-#include "Utility.h"
 #include "GameObject.h"
+#include "SpriteRenderComponent.h"
 //#include "Player.h"
 //#include "PowerUps.h"
 //#include "AssetMgr.h"
@@ -38,7 +24,6 @@
 CScene::CScene()
 {
 	m_vGameObj.resize(0);
-	m_pText.resize(0);
 
 	m_MainCamera = nullptr;
 	m_cCubeMap = nullptr;
@@ -61,32 +46,30 @@ CScene::~CScene()
 	}
 	m_vGameObj.clear();
 
-	for (auto text : m_pText)
-	{
-		delete text;
-	}
-	m_pText.clear();
-
 	// ========================================================
 	std::cout << "Cleaning Done... \n";
 }
 
-// void CScene::InitialiseScene(ESCENES _eSceneNum)
-// {
-// 
-// }
+void CScene::InitailizeScene()
+{
+
+}
 
 void CScene::RenderScene()
 {
 	//m_cCubeMap->Render(m_MainCamera);
 
-	for (auto obj : m_vGameObj)
+	for (CGameObject* gameObject : m_vGameObj)
 	{
-		obj->RenderObject(m_MainCamera);
-	}
-	for (unsigned int i = 0; i < m_pText.size(); i++)
-	{
-		//m_pText[i]->RenderTextLabel();
+		CSpriteRenderComponent* spriteRenderer
+			= gameObject->GetComponent<CSpriteRenderComponent>();
+		if (spriteRenderer)
+		{
+			spriteRenderer->RenderSprite(m_MainCamera);
+			continue;
+		}
+
+		//else if (gameObject->GetComponent<CSpriteRenderComponent>())
 	}
 }
 
@@ -108,7 +91,7 @@ void CScene::UpdateScene()
 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
 	}
 
-	CheckCollision();
+	//CheckCollision();
 }
 
 /* Legacy code */
@@ -155,7 +138,7 @@ void CScene::Instantiate(CGameObject * _gameobj)
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
-	_gameobj->SetPosition(_pos);
+	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
 }
 

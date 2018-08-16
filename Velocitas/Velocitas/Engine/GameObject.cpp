@@ -2,8 +2,7 @@
 #include "GameObject.h"
 
 // Local Include
-#include "Utility.h"
-
+#include "Component.h"
 
 
 /* Legacy Render Function*/
@@ -66,14 +65,17 @@ CGameObject::CGameObject()
 CGameObject::~CGameObject()
 {}
 
-void CGameObject::InitializeObject()
+void CGameObject::InitializeObject() 
 {
-
+	for (auto iter : m_components)
+	{
+		iter->Initialize();
+	}
 }
 
-void CGameObject::Update()
+void CGameObject::Update() 
 {
-	
+
 }
 
 void CGameObject::DestroyObject()
@@ -94,6 +96,17 @@ void CGameObject::SetActive(bool _b)
 bool CGameObject::ShouldDestroyed() const
 {
 	return m_ShouldDestroyed;
+}
+
+template<typename T>
+T* CGameObject::CreateComponent()
+{
+	CComponent* newComponent = new T();
+	newComponent->SetGameObject(this);
+
+	T* resultComponent = dynamic_cast<T*>(newComponent);
+
+	return resultComponent;
 }
 
 template<typename T>

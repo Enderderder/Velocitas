@@ -1,15 +1,8 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-// OpenGL Include
-#include <glew.h>
-#include <freeglut.h>
-#include <glm.hpp>
-
-// Library Include
-#include <vector>
-#include <chrono>
-#include <memory>
+// Global Include
+#include "Utility.h"
 
 // Forward Declaration
 class CGameObject;
@@ -21,10 +14,9 @@ class CScene
 {
 public:
 	CScene();
-	//CScene(ESCENES _eSceneNum);
 	~CScene();
 
-	//virtual void InitialiseScene(ESCENES _eSceneNum);
+	virtual void InitailizeScene();
 	virtual void RenderScene();
 	virtual void UpdateScene();
 
@@ -37,10 +29,6 @@ public:
 	void DestroyObject(CGameObject* _gameobj);
 
 	std::vector<CGameObject*> GetObjectVec() const;
-	
-
-	CTextLabel* TextTemp;
-	std::vector< CTextLabel* > m_pText;
 
 protected:
 	std::string sceneName;
@@ -50,8 +38,6 @@ protected:
 	CCubeMap * m_cCubeMap;
 
 	std::vector<CGameObject*> m_vGameObj;
-
-	std::vector< std::shared_ptr<CTextLabel> > m_vTextLabel;
 
 private:
 

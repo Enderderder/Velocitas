@@ -67,6 +67,12 @@
     <Filter Include="Framework\Component\MeshComponent">
       <UniqueIdentifier>{da2f9781-989b-4bd8-a61e-1c67c3bfbd41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scenes">
+      <UniqueIdentifier>{dfc41e71-5869-4a3c-be31-f324c11ab69e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes\TestScene">
+      <UniqueIdentifier>{48fa0dad-5424-48c9-a908-c59bb1a06b6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -107,9 +113,6 @@
     <ClInclude Include="Engine\GameObject.h">
       <Filter>Framework\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\SpceShip.h">
-      <Filter>Game\SpaceShip</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Time.h">
       <Filter>Framework\Time</Filter>
     </ClInclude>
@@ -121,6 +124,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Component.h">
       <Filter>Framework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\TestScene.h">
+      <Filter>Game\Scenes\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SpceShip.h">
+      <Filter>Game\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,9 +166,6 @@
     <ClCompile Include="Engine\GameObject.cpp">
       <Filter>Framework\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpceShip.cpp">
-      <Filter>Game\SpaceShip</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Time.cpp">
       <Filter>Framework\Time</Filter>
     </ClCompile>
@@ -171,6 +177,12 @@
     </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
       <Filter>Framework\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\TestScene.cpp">
+      <Filter>Game\Scenes\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SpceShip.cpp">
+      <Filter>Game\SpaceShip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

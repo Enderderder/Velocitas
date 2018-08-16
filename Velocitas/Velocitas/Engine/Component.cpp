@@ -1,13 +1,19 @@
 // This Inlcude 
 #include "Component.h"
 
-CComponent::CComponent(CGameObject* _gameObject) 
+CComponent::CComponent() {}
+
+CComponent::~CComponent() {}
+
+void CComponent::SetGameObject(CGameObject* _gameObject)
 {
 	this->m_gameObject = _gameObject;
 }
 
-
-CComponent::~CComponent() {}
+CGameObject* CComponent::GetGameObject() const
+{
+	return m_gameObject;
+}
 
 void CComponent::SetActive(bool _b)
 {

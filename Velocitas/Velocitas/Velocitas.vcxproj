@@ -31,13 +31,14 @@
     <ClInclude Include="Engine\SceneMgr.h" />
     <ClInclude Include="Engine\ShaderLoader.h" />
     <ClInclude Include="Engine\Sound.h" />
-    <ClInclude Include="Engine\SpceShip.h" />
     <ClInclude Include="Engine\Sprite.h" />
     <ClInclude Include="Engine\SpriteRenderComponent.h" />
     <ClInclude Include="Engine\TextLabel.h" />
     <ClInclude Include="Engine\TextLoader.h" />
     <ClInclude Include="Engine\Time.h" />
     <ClInclude Include="Engine\Utility.h" />
+    <ClInclude Include="Game\SpceShip.h" />
+    <ClInclude Include="Game\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp" />
@@ -50,12 +51,13 @@
     <ClCompile Include="Engine\SceneMgr.cpp" />
     <ClCompile Include="Engine\ShaderLoader.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
-    <ClCompile Include="Engine\SpceShip.cpp" />
     <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Engine\SpriteRenderComponent.cpp" />
     <ClCompile Include="Engine\TextLabel.cpp" />
     <ClCompile Include="Engine\TextLoader.cpp" />
     <ClCompile Include="Engine\Time.cpp" />
+    <ClCompile Include="Game\SpceShip.cpp" />
+    <ClCompile Include="Game\TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs" />
