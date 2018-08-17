@@ -1,23 +1,26 @@
 #pragma once
 
+// Global Include
 #include "Utility.h"
-#include "Camera.h"
 
-class Sprite
+// Forward Declare
+struct Transform;
+class CCamera;
+
+class CSprite
 {
 public:
-	Sprite() =  default;
-	Sprite(const char* _filePath);
-	~Sprite();
+	CSprite() =  default;
+	CSprite(const char* _filePath);
+	~CSprite();
 
-	void CreateSprite(const char* _filePath);
-	void RenderSprite(float _PosX, float _PosY, float _ScaleX, float _ScaleY, float _Rotation, Camera* _camera);
+	void CreateSprite(const char* _filePath, GLuint _programID);
+	void RenderSprite(Transform _transform, CCamera* _camera, GLuint _programID);
 
 private:
 	int m_iWidth;
 	int m_iHeight;
 
-	GLuint m_programID;
 	GLuint m_vbo; // Vertex Buffer Obj
 	GLuint m_vao; // Vertex Array Obj
 	GLuint m_ebo; // Element Buffer Obj

@@ -41,7 +41,7 @@ void CCamera::UpdateCamera()
 
 }
 
-glm::mat4 CCamera::GetViewMatrix() const
+glm::mat4 CCamera::GetView() const
 {
 	return(m_ViewMatrix);
 }
@@ -54,7 +54,7 @@ void CCamera::CalcViewMatrix()
 		m_CameraNormal);
 }
 
-glm::mat4 CCamera::GetProjectionMatrix() const
+glm::mat4 CCamera::GetProj() const
 {
 	return(m_ProjectionMatrix);
 }

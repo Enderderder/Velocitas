@@ -27,10 +27,10 @@ public:
 	CCamera(glm::vec3 _Positition, glm::vec3 _Facing, glm::vec3 _Normal);
 	void UpdateCamera();
 
-	glm::mat4 GetViewMatrix() const;
+	glm::mat4 GetView() const;
 	void CalcViewMatrix();
 
-	glm::mat4 GetProjectionMatrix() const;
+	glm::mat4 GetProj() const;
 	void SetProjectionMatrix();
 	void SetProjectionMatrix(float _fov);
 

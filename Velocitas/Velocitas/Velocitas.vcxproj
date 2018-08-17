@@ -22,6 +22,7 @@
     <Text Include="Engine\Commenting Header.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssateMgr.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\GameObject.h" />
@@ -41,6 +42,7 @@
     <ClInclude Include="Game\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssateMgr.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
@@ -119,12 +121,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(ProjectDir);$(IncludePath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(IncludePath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(ProjectDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Engine\Dependencies\soil;$(ProjectDir)\Engine\Dependencies\glew;$(ProjectDir)\Engine\Dependencies\freeglut;$(ProjectDir)\Engine\Dependencies\glm;$(ProjectDir)\Engine\Dependencies\FMOD;$(ProjectDir)\Engine\Dependencies;$(ProjectDir)\Engine\Dependencies\freetype;$(ProjectDir)\Engine\Dependencies\assimp;$(ProjectDir)\Engine\Dependencies\Box2D;$(ProjectDir);$(IncludePath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

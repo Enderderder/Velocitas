@@ -17,8 +17,8 @@ public:
 	~CScene();
 
 	virtual void InitailizeScene();
-	virtual void RenderScene();
 	virtual void UpdateScene();
+	void RenderScene();
 
 	void CheckCollision();
 

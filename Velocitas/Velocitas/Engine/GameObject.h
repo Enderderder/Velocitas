@@ -37,6 +37,11 @@ protected:
 	std::vector<CComponent*> m_components;
 
 public:
+	/**
+	* Initialize the object
+	* Call right after the scene initialize
+	*/
+	virtual void InitializeObject();
 	/*
 	 * Call every frame
 	 */
@@ -66,11 +71,6 @@ public:
 
 protected:
 	
-	/**
-	 * Initialize the object
-	 * Call right after the scene initialize
-	 */
-	virtual void InitializeObject();
 	/**
 	 * Creates a component and push to the vector
 	 */

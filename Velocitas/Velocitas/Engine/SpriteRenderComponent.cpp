@@ -3,6 +3,7 @@
 
 // Local Include
 #include "GameObject.h"
+#include "Sprite.h"
 
 CSpriteRenderComponent::CSpriteRenderComponent() {}
 
@@ -15,13 +16,24 @@ void CSpriteRenderComponent::Initialize()
 	
 }
 
-void CSpriteRenderComponent::RenderSprite(CCamera* camera)
+void CSpriteRenderComponent::RenderSprite(CCamera* _camera)
 {
 	if (this->m_gameObject->IsActive() == false
-		|| m_TextureID == NULL)
+		|| m_sprite == nullptr)
 	{
 		return;
 	}
 
+	//_sprite->RenderSprite(_camera, m_programID);
+
+}
+
+void CSpriteRenderComponent::SetSprite(CSprite* _sprite)
+{
+	m_sprite = _sprite;
+}
+
+void CSpriteRenderComponent::SetProgram(GLuint _programID)
+{
 
 }

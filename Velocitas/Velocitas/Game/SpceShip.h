@@ -1,8 +1,10 @@
 #pragma once
 
-#include "GameObject.h"
+// Derive Include
+#include "Engine/GameObject.h"
 
-
+// Forward Declare
+class CSpriteRenderComponent;
 
 
 class CSpceShip : public CGameObject
@@ -12,10 +14,12 @@ public:
 	~CSpceShip();
 
 
-	virtual void Update() override
-	{
-		__super::Update();
-		
-	}
+	virtual void InitializeObject() override;
+	virtual void Update() override;
+
+private:
+
+	CSpriteRenderComponent* m_spriteRenderer;
+
 };
 

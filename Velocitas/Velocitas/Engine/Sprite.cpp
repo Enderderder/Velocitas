@@ -1,18 +1,22 @@
-#include "Sprite.h"
-#include "Utility.h"
 
-Sprite::Sprite(const char* _filePath)
+// This Include
+#include "Sprite.h"
+
+// Engine Include
+#include "Camera.h"
+#include "GameObject.h"
+
+
+CSprite::CSprite(const char* _filePath)
 {
 	CreateSprite(_filePath);
 }
 
-Sprite::~Sprite()
+CSprite::~CSprite()
 {}
 
-void Sprite::CreateSprite(const char* _filePath)
+void CSprite::CreateSprite(const char* _filePath, GLuint _programID)
 {
-	m_programID = Util::shaderLoader.CreateProgram("Resources/Shaders/Sprite.vs", "Resources/Shaders/Sprite.fs");
-
 	glUseProgram(m_programID);
 
 	glGenTextures(1, &m_tex);
@@ -100,25 +104,29 @@ void Sprite::CreateSprite(const char* _filePath)
 	glBindVertexArray(0);
 }
 
-void Sprite::RenderSprite(float _PosX, float _PosY, float _ScaleX, float _ScaleY, float _Rotation, Camera* _camera)
+void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _programID)
 {
-	glUseProgram(m_programID);
+	glUseProgram(_programID);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
-	glUniform1i(glGetUniformLocation(m_programID, "tex"), 0);
+	glUniform1i(glGetUniformLocation(_programID, "tex"), 0);
 
-	glm::vec3 objPosition = glm::vec3(_PosX, _PosY, 0.0f);
-	glm::mat4 translate = glm::translate(glm::mat4(), objPosition);
-	glm::vec3 objSclae = glm::vec3(_ScaleX, _ScaleY, 1.0);
-	glm::mat4 scale = glm::scale(glm::mat4(), objSclae);
-	glm::vec3 rotationAxis = glm::vec3(0.0, 0.0, 1.0);
-	glm::mat4 rotation = glm::rotate(glm::mat4(), glm::radians(_Rotation), rotationAxis);
-	glm::mat4 model = translate * rotation * scale;
+	glm::vec3 position = _transform.position;
+	glm::vec3 scale = _transform.scale;
+	glm::vec3 rotation = _transform.rotation;
+
+
+	glm::mat4 objTranslate = glm::translate(glm::mat4(), position);
+	glm::mat4 objScale = glm::scale(glm::mat4(), scale);
+	glm::mat4 objRotation = glm::rotate(glm::mat4(), glm::radians(rotation.x), glm::vec3(1.0, 0.0, 0.0));
+	objRotation = glm::rotate(objRotation, glm::radians(rotation.y), glm::vec3(0.0, 1.0, 0.0));
+	objRotation = glm::rotate(objRotation, glm::radians(rotation.z), glm::vec3(0.0, 0.0, 1.0));
+	glm::mat4 model = objTranslate * objRotation * objScale;
 	
 	glm::mat4 MVP = _camera->GetProj() * _camera->GetView() * model;
 
-	GLint MVPLoc = glGetUniformLocation(m_programID, "MVP");
+	GLint MVPLoc = glGetUniformLocation(_programID, "MVP");
 	glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, glm::value_ptr(MVP));
 
 	glBindVertexArray(m_vao);
@@ -127,4 +135,5 @@ void Sprite::RenderSprite(float _PosX, float _PosY, float _ScaleX, float _ScaleY
 	// Unbind
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
+	glUseProgram(0);
 }
