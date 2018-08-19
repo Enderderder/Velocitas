@@ -11,3 +11,9 @@ void CTestScene::InitailizeScene()
 
 }
 
+void CTestScene::UpdateScene()
+{
+	__super::UpdateScene();
+	
+}
+

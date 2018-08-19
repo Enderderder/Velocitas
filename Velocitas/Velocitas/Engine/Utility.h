@@ -13,8 +13,10 @@
 
 // Library Include -----------------------------------------------------------------------------
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 #include <chrono>
 #include <WS2tcpip.h>
 #include <strstream>

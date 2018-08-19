@@ -76,6 +76,9 @@
     <Filter Include="Framework\AssetManager">
       <UniqueIdentifier>{225f8f3b-b045-46b7-b1c5-9e3c083722a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Debug">
+      <UniqueIdentifier>{74918b90-989e-41d3-8787-2afa7efda493}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -134,7 +137,12 @@
     <ClInclude Include="Game\SpceShip.h">
       <Filter>Game\SpaceShip</Filter>
     </ClInclude>
-    <ClInclude Include="AssateMgr.h" />
+    <ClInclude Include="Engine\AssetMgr.h">
+      <Filter>Framework\AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Debug.h">
+      <Filter>Framework\Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -188,7 +196,12 @@
     <ClCompile Include="Game\SpceShip.cpp">
       <Filter>Game\SpaceShip</Filter>
     </ClCompile>
-    <ClCompile Include="AssateMgr.cpp" />
+    <ClCompile Include="Engine\AssetMgr.cpp">
+      <Filter>Framework\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Debug.cpp">
+      <Filter>Framework\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs">

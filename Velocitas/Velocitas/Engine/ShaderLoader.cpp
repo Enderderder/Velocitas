@@ -1,11 +1,9 @@
-#include "ShaderLoader.h" 
-#include <iostream>
-#include <fstream>
-#include <vector>
+
+// This Include
+#include "ShaderLoader.h"
 
 ShaderLoader::ShaderLoader(void){}
 ShaderLoader::~ShaderLoader(void){}
-
 
 std::string ShaderLoader::ReadShader(const char *filename)
 {

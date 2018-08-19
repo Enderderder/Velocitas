@@ -1,15 +1,14 @@
 #pragma once
 
-#include "glew.h"
-#include "freeglut.h"
-#include <iostream>
+// Global Include
+#include "Utility.h"
 
 class ShaderLoader
 {
 	private:
 
-		std::string ReadShader(const char *filename);
-		GLuint CreateShader(GLenum shaderType,
+		static std::string ReadShader(const char *filename);
+		static GLuint CreateShader(GLenum shaderType,
 			std::string source,
 			const char* shaderName);
 
@@ -17,7 +16,7 @@ class ShaderLoader
 
 		ShaderLoader(void);
 		~ShaderLoader(void);
-		GLuint CreateProgram(const char* VertexShaderFilename,
+		static GLuint CreateProgram(const char* VertexShaderFilename,
 			const char* FragmentShaderFilename);
 
 };

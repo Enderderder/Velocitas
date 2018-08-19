@@ -6,18 +6,12 @@
 #include "Camera.h"
 #include "GameObject.h"
 
+CSprite::CSprite() {}
+CSprite::~CSprite() {}
 
-CSprite::CSprite(const char* _filePath)
+void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 {
-	CreateSprite(_filePath);
-}
-
-CSprite::~CSprite()
-{}
-
-void CSprite::CreateSprite(const char* _filePath, GLuint _programID)
-{
-	glUseProgram(m_programID);
+	//glUseProgram(_programID);
 
 	glGenTextures(1, &m_tex);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
@@ -67,13 +61,16 @@ void CSprite::CreateSprite(const char* _filePath, GLuint _programID)
 		0, 2, 3  // Second Triangle
 	};
 
+	/** Create VBO and EBO variable for binding */
+	GLuint VBO, EBO;
+
 	glGenVertexArrays(1, &m_vao); // Create VAO
 	glBindVertexArray(m_vao);
-	glGenBuffers(1, &m_vbo); // Create VBO
-	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+	glGenBuffers(1, &VBO); // Create VBO
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glGenBuffers(1, &m_ebo); // Create EBO
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
+	glGenBuffers(1, &EBO); // Create EBO
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// Enable Back Face Culling
