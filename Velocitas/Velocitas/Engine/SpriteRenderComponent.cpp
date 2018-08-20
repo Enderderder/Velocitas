@@ -24,7 +24,10 @@ void CSpriteRenderComponent::Render(CCamera* _camera)
 		return;
 	}
 
-	//_sprite->RenderSprite(_camera, m_programID);
+	
+
+	m_sprite->RenderSprite(this->m_gameObject->m_transform, 
+		_camera, m_programID);
 
 }
 

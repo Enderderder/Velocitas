@@ -87,6 +87,13 @@ T* CGameObject::CreateComponent()
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 
+	if (resultComponent != nullptr)
+	{
+		std::cout << "component pushed" << std::endl;
+		m_components.push_back(resultComponent);
+	}
+
+
 	return resultComponent;
 }
 

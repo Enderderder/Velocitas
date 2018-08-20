@@ -168,7 +168,7 @@ public:
 
 	/// Get the world body origin position.
 	/// @return the world position of the body's origin.
-	const b2Vec2& GetTransform() const;
+	const b2Vec2& GetPosition() const;
 
 	/// Get the angle in radians.
 	/// @return the current world rotation angle in radians.
@@ -482,7 +482,7 @@ inline const b2Transform& b2Body::GetTransform() const
 	return m_xf;
 }
 
-inline const b2Vec2& b2Body::GetTransform() const
+inline const b2Vec2& b2Body::GetPosition() const
 {
 	return m_xf.p;
 }

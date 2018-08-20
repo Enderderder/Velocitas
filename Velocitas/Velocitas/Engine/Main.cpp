@@ -5,7 +5,8 @@
 //#include "SinglePlayerScene.h"
 //#include "MeshMgr.h"
 //#include "ModelMgr.h"
-//#include "AssetMgr.h"
+#include "AssetMgr.h"
+#include "SceneMgr.h"
 //#include "CNetworkMgr.h"
 //#include "network.h"
 #include "Input.h"
@@ -13,6 +14,8 @@
 
 // GLobal Variables
 static CTime* p_Time = CTime::GetInstance();
+static CSceneMgr* p_SceneMgr = CSceneMgr::GetInstance();
+static CAssetMgr* p_Asset = CAssetMgr::GetInstance();
 
 void InititializeProgram();
 void Render();
@@ -60,7 +63,8 @@ int main(int argc, char **argv)
 void InititializeProgram()
 {
 	p_Time->Initialize();
-
+	p_Asset->InitializeAssets();
+	p_SceneMgr->InitializeScenes();
 
 	//m_pSound.PlaySound();
 	//cInputMgr->InitializeInput();
@@ -83,7 +87,7 @@ void InititializeProgram()
 
 void Render()
 {
-	//cSceneMgr->RenderCurrentScene();
+	p_SceneMgr->RenderCurrentScene();
 
 	//g_FPSLabel->RenderTextLabel();
 
@@ -95,7 +99,7 @@ void Update()
 	p_Time->Update();
 
 	// Update whats currently running
-	//cSceneMgr->UpdateCurrentScene();
+	p_SceneMgr->UpdateCurrentScene();
 
 	// Full Screen Control
 	//if (cInputMgr->g_cKeyState[(unsigned char)'f'] == INPUT_FIRST_PRESS)

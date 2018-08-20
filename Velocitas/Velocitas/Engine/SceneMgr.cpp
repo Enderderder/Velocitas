@@ -29,7 +29,14 @@ void CSceneMgr::DestroyInstance()
 
 void CSceneMgr::InitializeScenes()
 {
-	CreateNewScene("Test Scene", new CTestScene());
+	CScene* newScene = new CTestScene();
+
+	CreateNewScene("Test Scene", newScene);
+	
+	m_runningScene = newScene;
+
+	m_runningScene->InitailizeScene();
+	m_runningScene->BeginPlay();
 }
 
 void CSceneMgr::RenderCurrentScene()

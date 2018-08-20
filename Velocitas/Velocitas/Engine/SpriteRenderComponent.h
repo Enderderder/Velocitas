@@ -27,7 +27,7 @@ public:
 	
 private:
 
-	CSprite * m_sprite;
+	CSprite* m_sprite;
 	GLuint m_programID;
 
 };

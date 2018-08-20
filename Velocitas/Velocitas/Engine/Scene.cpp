@@ -23,7 +23,7 @@
 
 CScene::CScene()
 {
-	m_vGameObj.resize(0);
+	//m_vGameObj.resize(0);
 
 	m_MainCamera = nullptr;
 	m_cCubeMap = nullptr;
@@ -52,22 +52,35 @@ CScene::~CScene()
 
 void CScene::InitailizeScene() {}
 
+void CScene::BeginPlay()
+{
+	for (auto obj : m_vGameObj)
+	{
+		obj->InitializeObject();
+	}
+}
+
 void CScene::RenderScene()
 {
 	//m_cCubeMap->Render(m_MainCamera);
 
-	for (CGameObject* gameObject : m_vGameObj)
+	if (!m_vGameObj.empty())
 	{
-		CSpriteRenderComponent* spriteRenderer
-			= gameObject->GetComponent<CSpriteRenderComponent>();
-		if (spriteRenderer)
+		for (CGameObject* gameObject : m_vGameObj)
 		{
-			spriteRenderer->Render(m_MainCamera);
-			continue;
-		}
+			CSpriteRenderComponent* spriteRenderer
+				= gameObject->GetComponent<CSpriteRenderComponent>();
+			if (spriteRenderer)
+			{
+				//std::cout << "rendering sprite" << std::endl;
+				spriteRenderer->Render(m_MainCamera);
+				continue;
+			}
 
-		//else if (gameObject->GetComponent<CSpriteRenderComponent>())
+			//else if (gameObject->GetComponent<CSpriteRenderComponent>())
+		}
 	}
+	
 }
 
 void CScene::ResetScene()

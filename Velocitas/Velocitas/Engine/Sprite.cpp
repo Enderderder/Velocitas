@@ -5,13 +5,15 @@
 // Engine Include
 #include "Camera.h"
 #include "GameObject.h"
+#include "AssetMgr.h"
 
 CSprite::CSprite() {}
 CSprite::~CSprite() {}
 
 void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 {
-	//glUseProgram(_programID);
+// 	GLuint program = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
+// 	glUseProgram(program);
 
 	glGenTextures(1, &m_tex);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
@@ -41,7 +43,7 @@ void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glGenerateMipmap(GL_TEXTURE_2D);
+	glGenerateMipmap(GL_TEXTURE_2D); 
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -103,11 +105,12 @@ void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 
 void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _programID)
 {
-	glUseProgram(_programID);
+	GLuint program = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
+	glUseProgram(program);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
-	glUniform1i(glGetUniformLocation(_programID, "tex"), 0);
+	glUniform1i(glGetUniformLocation(program, "tex"), 0);
 
 	glm::vec3 position = _transform.position;
 	glm::vec3 scale = _transform.scale;
@@ -123,7 +126,7 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	
 	glm::mat4 MVP = _camera->GetProj() * _camera->GetView() * model;
 
-	GLint MVPLoc = glGetUniformLocation(_programID, "MVP");
+	GLint MVPLoc = glGetUniformLocation(program, "MVP");
 	glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, glm::value_ptr(MVP));
 
 	glBindVertexArray(m_vao);

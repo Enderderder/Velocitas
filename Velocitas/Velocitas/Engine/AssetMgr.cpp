@@ -35,7 +35,7 @@ void CAssetMgr::InitializeAssets()
 	CreateProgram("DefaultSpriteProgram", "Engine/Shaders/Sprite.vs", "Engine/Shaders/Sprite.fs");
 
 	/** Initialize Sprites */
-	CreateSprite("Block", "Resource/Sprites/Block.png");
+	CreateSprite("Block", "Resources/Sprites/Block.png");
 }
 
 CSprite* CAssetMgr::GetSprite(std::string _name) const
