@@ -105,12 +105,11 @@ void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 
 void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _programID)
 {
-	GLuint program = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
-	glUseProgram(program);
+	glUseProgram(_programID);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
-	glUniform1i(glGetUniformLocation(program, "tex"), 0);
+	glUniform1i(glGetUniformLocation(_programID, "tex"), 0);
 
 	glm::vec3 position = _transform.position;
 	glm::vec3 scale = _transform.scale;
@@ -126,7 +125,7 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	
 	glm::mat4 MVP = _camera->GetProj() * _camera->GetView() * model;
 
-	GLint MVPLoc = glGetUniformLocation(program, "MVP");
+	GLint MVPLoc = glGetUniformLocation(_programID, "MVP");
 	glUniformMatrix4fv(MVPLoc, 1, GL_FALSE, glm::value_ptr(MVP));
 
 	glBindVertexArray(m_vao);

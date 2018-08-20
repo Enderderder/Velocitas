@@ -16,14 +16,8 @@
 //#include "CubeMap.h"
 //#include "TextLabel.h"
 
-// Manager Pointer
-//static CAssetMgr* cAssetMgr = CAssetMgr::GetInstance();
-//static CModelMgr* cModelMgr = CModelMgr::GetInstance();
-//static CMeshMgr* cMeshMgr = CMeshMgr::GetInstance();
-
 CScene::CScene()
 {
-	//m_vGameObj.resize(0);
 
 	m_MainCamera = nullptr;
 	m_cCubeMap = nullptr;
@@ -50,7 +44,7 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene() {}
+void CScene::InitailizeScene() { m_vGameObj.resize(0); }
 
 void CScene::BeginPlay()
 {

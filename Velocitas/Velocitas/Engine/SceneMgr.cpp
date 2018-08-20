@@ -29,14 +29,17 @@ void CSceneMgr::DestroyInstance()
 
 void CSceneMgr::InitializeScenes()
 {
-	CScene* newScene = new CTestScene();
-
-	CreateNewScene("Test Scene", newScene);
+	/** Create scenes that is going to build in the game */
+	CreateNewScene("Test Scene", new CTestScene());
 	
-	m_runningScene = newScene;
-
-	m_runningScene->InitailizeScene();
-	m_runningScene->BeginPlay();
+	/** Run the first scene */
+	if (!m_scenes.empty())
+	{
+		auto iter = m_scenes.begin();
+		m_runningScene = iter->second;
+		m_runningScene->InitailizeScene();
+		m_runningScene->BeginPlay();
+	}
 }
 
 void CSceneMgr::RenderCurrentScene()

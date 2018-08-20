@@ -12,9 +12,6 @@
 CSpaceShip::CSpaceShip()
 {
 	m_spriteRenderer = CreateComponent<CSpriteRenderComponent>();
-	
-
-
 }
 
 CSpaceShip::~CSpaceShip()
@@ -29,7 +26,7 @@ void CSpaceShip::InitializeObject()
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
 
 
-	this->m_transform.scale = glm::vec3(1000.0f, 1000.0f, 1000.0f);
+	//this->m_transform.scale = glm::vec3(1000.0f, 1000.0f, 1000.0f);
 }
 
 void CSpaceShip::Update()
