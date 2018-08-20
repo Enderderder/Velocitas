@@ -16,7 +16,7 @@ void CSpriteRenderComponent::Initialize()
 	
 }
 
-void CSpriteRenderComponent::RenderSprite(CCamera* _camera)
+void CSpriteRenderComponent::Render(CCamera* _camera)
 {
 	if (this->m_gameObject->IsActive() == false
 		|| m_sprite == nullptr)

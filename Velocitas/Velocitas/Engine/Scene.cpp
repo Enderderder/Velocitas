@@ -50,10 +50,7 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene()
-{
-
-}
+void CScene::InitailizeScene() {}
 
 void CScene::RenderScene()
 {
@@ -65,12 +62,21 @@ void CScene::RenderScene()
 			= gameObject->GetComponent<CSpriteRenderComponent>();
 		if (spriteRenderer)
 		{
-			spriteRenderer->RenderSprite(m_MainCamera);
+			spriteRenderer->Render(m_MainCamera);
 			continue;
 		}
 
 		//else if (gameObject->GetComponent<CSpriteRenderComponent>())
 	}
+}
+
+void CScene::ResetScene()
+{
+	for (auto obj : m_vGameObj)
+	{
+		delete obj;
+	}
+	m_vGameObj.clear();
 }
 
 void CScene::UpdateScene()

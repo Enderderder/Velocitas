@@ -134,14 +134,17 @@
     <ClInclude Include="Game\TestScene.h">
       <Filter>Game\Scenes\TestScene</Filter>
     </ClInclude>
-    <ClInclude Include="Game\SpceShip.h">
-      <Filter>Game\SpaceShip</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\AssetMgr.h">
       <Filter>Framework\AssetManager</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Debug.h">
       <Filter>Framework\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameClasses.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SpaceShip.h">
+      <Filter>Game\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -193,14 +196,14 @@
     <ClCompile Include="Game\TestScene.cpp">
       <Filter>Game\Scenes\TestScene</Filter>
     </ClCompile>
-    <ClCompile Include="Game\SpceShip.cpp">
-      <Filter>Game\SpaceShip</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\AssetMgr.cpp">
       <Filter>Framework\AssetManager</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Debug.cpp">
       <Filter>Framework\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SpaceShip.cpp">
+      <Filter>Game\SpaceShip</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

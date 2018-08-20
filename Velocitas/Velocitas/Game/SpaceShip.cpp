@@ -1,13 +1,14 @@
 
 // This Include
-#include "SpceShip.h"
+#include "SpaceShip.h"
 
 // Engine Include
 #include "Engine/AssetMgr.h"
+#include "Engine/Component.h"
 #include "Engine/SpriteRenderComponent.h"
 
 
-CSpceShip::CSpceShip()
+CSpaceShip::CSpaceShip()
 {
 	m_spriteRenderer = CreateComponent<CSpriteRenderComponent>();
 	
@@ -15,20 +16,20 @@ CSpceShip::CSpceShip()
 
 }
 
-CSpceShip::~CSpceShip()
+CSpaceShip::~CSpaceShip()
 {}
 
-void CSpceShip::InitializeObject()
+void CSpaceShip::InitializeObject()
 {
 	__super::InitializeObject();
 	
-	/** Set the sprite if the object */
+	/** Set the sprite for the object */
 	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
 
 }
 
-void CSpceShip::Update()
+void CSpaceShip::Update()
 {
 	__super::Update();
 	

@@ -1,6 +1,7 @@
 // Global Include
 #include "Utility.h"
 #include "SceneMgr.h"
+#include "Time.h"
 //#include "SinglePlayerScene.h"
 //#include "MeshMgr.h"
 //#include "ModelMgr.h"

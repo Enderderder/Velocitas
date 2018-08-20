@@ -15,6 +15,7 @@
 #ifndef CSound_H
 #define CSound_H
 
+#include "Utility.h"
 
 class CSound
 {

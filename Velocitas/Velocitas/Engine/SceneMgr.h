@@ -1,52 +1,19 @@
-/*
-// Bachelor of Software Engineering
-// Media Design School
-// Auckland
-// New Zealand
-//
-// (c) 2018 Media Design School
-//
-// File Name    : SceneMgr.h
-// Description	:
-// Author       : Richard Wulansari & Jacob Dewse
-// Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
-*/
-
 #ifndef _SCENEMGR_H
 #define _SCENEMGR_H
 
-// Library Include
-#include <vector>
+// Global Include
+#include "Utility.h"
 
 // Forawrd Declare
-#include "Scene.h"
-
-// Enum Declare
-enum ESCENES
-{
-	MAINMENU = 0,
-	MULTIPLAYERMENU,
-	GAME,
-	MULTIPLAYER,
-	GAMEOVER,
-	LOBBY
-};
+class CScene;
 
 class CSceneMgr
 {
+#pragma region Singleton
 public:
 	// Singleton Methods
 	static CSceneMgr* GetInstance();
 	static void DestroyInstance();
-
-	// Member Functions
-	void InitializeSceneMgr();
-	void RenderCurrentScene();
-	void UpdateCurrentScene();
-	void SwapScene(ESCENES);
-	CScene* GetCurrentScene() const;
-	ESCENES GetCurrentSceneEnum() const;
-	
 
 private:
 	// Make singleton by set the constructor inside private
@@ -61,11 +28,25 @@ protected:
 	// Singleton Object
 	static CSceneMgr* s_pSceneMgr;
 
+#pragma endregion Singleton
+
+public:
+	
+	// Member Functions
+	void InitializeScenes();
+	void RenderCurrentScene();
+	void UpdateCurrentScene();
+	void CreateNewScene(std::string _name, CScene* _scene);
+	void LoadScene(std::string _name);
+	CScene* GetRunningScene() const;
+
 private:
 	// Member Variables
-	std::vector<CScene*> m_vScenes; // Scene Container
 
-	ESCENES m_eCurrentScene; // Current scene thats displaying and updating
+	std::map<std::string, CScene*> m_scenes; // Scene Container
+
+	CScene* m_runningScene;
+
 };
 
 #endif // !_SCENEMGR_H

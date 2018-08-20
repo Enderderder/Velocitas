@@ -97,29 +97,3 @@ bool CGameObject::ShouldDestroyed() const
 {
 	return m_ShouldDestroyed;
 }
-
-template<typename T>
-T* CGameObject::CreateComponent()
-{
-	CComponent* newComponent = new T();
-	newComponent->SetGameObject(this);
-
-	T* resultComponent = dynamic_cast<T*>(newComponent);
-
-	return resultComponent;
-}
-
-template<typename T>
-T* CGameObject::GetComponent() const
-{
-
-	for (CComponent* iter : m_components)
-	{
-		if (dynamic_cast<T*>(iter) != nullptr)
-		{
-			return iter;
-		}
-	}
-
-	return nullptr;
-}
