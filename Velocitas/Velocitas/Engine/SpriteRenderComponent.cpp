@@ -12,11 +12,9 @@ CSpriteRenderComponent::~CSpriteRenderComponent() {}
 void CSpriteRenderComponent::Initialize()
 {
 	__super::Initialize();
-	
-	
 }
 
-void CSpriteRenderComponent::RenderSprite(CCamera* _camera)
+void CSpriteRenderComponent::Render(CCamera* _camera)
 {
 	if (this->m_gameObject->IsActive() == false
 		|| m_sprite == nullptr)
@@ -24,8 +22,8 @@ void CSpriteRenderComponent::RenderSprite(CCamera* _camera)
 		return;
 	}
 
-	//_sprite->RenderSprite(_camera, m_programID);
-
+	m_sprite->RenderSprite(this->m_gameObject->m_transform, 
+		_camera, m_programID);
 }
 
 void CSpriteRenderComponent::SetSprite(CSprite* _sprite)
@@ -35,5 +33,5 @@ void CSpriteRenderComponent::SetSprite(CSprite* _sprite)
 
 void CSpriteRenderComponent::SetProgram(GLuint _programID)
 {
-
+	m_programID = _programID;
 }

@@ -5,13 +5,15 @@
 // Engine Include
 #include "Camera.h"
 #include "GameObject.h"
+#include "AssetMgr.h"
 
 CSprite::CSprite() {}
 CSprite::~CSprite() {}
 
 void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 {
-	//glUseProgram(_programID);
+// 	GLuint program = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
+// 	glUseProgram(program);
 
 	glGenTextures(1, &m_tex);
 	glBindTexture(GL_TEXTURE_2D, m_tex);
@@ -41,7 +43,7 @@ void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glGenerateMipmap(GL_TEXTURE_2D);
+	glGenerateMipmap(GL_TEXTURE_2D); 
 	SOIL_free_image_data(image);
 	glBindTexture(GL_TEXTURE_2D, 0);
 

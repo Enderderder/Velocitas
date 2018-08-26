@@ -9,7 +9,7 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 #include <fmod.hpp>
-#include <Box2D/Box2D.h>
+//#include <Box2D/Box2D.h>
 
 // Library Include -----------------------------------------------------------------------------
 #include <iostream>
@@ -43,6 +43,7 @@ namespace util
 	// Define the screen size
 	static int SCR_WIDTH = 1366;
 	static int SCR_HEIGHT = 768;
+	static int PIXELUNIT = 1;
 }
 
 // Define Struct -------------------------------------------------------------------------------

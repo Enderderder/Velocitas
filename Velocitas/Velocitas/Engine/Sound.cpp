@@ -12,10 +12,11 @@
 // Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
 //
 
-#include "Utility.h"
+// This Include
+#include "Sound.h"
 
 // Global Variable -----------------------------------------------------------------------------
-FMOD::System* audioMgr; 
+FMOD::System* audioMgr;
 FMOD::Sound* bgmTheme;
 
 CSound::CSound()

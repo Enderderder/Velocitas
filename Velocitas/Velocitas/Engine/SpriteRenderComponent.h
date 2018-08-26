@@ -18,7 +18,7 @@ public:
 
 	virtual void Initialize() override;
 
-	void RenderSprite(CCamera* camera);
+	void Render(CCamera* camera);
 
 	void SetSprite(CSprite* _sprite);
 	void SetProgram(GLuint _programID);
@@ -27,7 +27,7 @@ public:
 	
 private:
 
-	CSprite * m_sprite;
+	CSprite* m_sprite;
 	GLuint m_programID;
 
 };

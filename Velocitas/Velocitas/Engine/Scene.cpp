@@ -4,6 +4,7 @@
 // Local Include
 #include "GameObject.h"
 #include "SpriteRenderComponent.h"
+#include "Debug.h"
 //#include "Player.h"
 //#include "PowerUps.h"
 //#include "AssetMgr.h"
@@ -16,29 +17,19 @@
 //#include "CubeMap.h"
 //#include "TextLabel.h"
 
-// Manager Pointer
-//static CAssetMgr* cAssetMgr = CAssetMgr::GetInstance();
-//static CModelMgr* cModelMgr = CModelMgr::GetInstance();
-//static CMeshMgr* cMeshMgr = CMeshMgr::GetInstance();
-
 CScene::CScene()
 {
-	m_vGameObj.resize(0);
-
-	m_MainCamera = nullptr;
-	m_cCubeMap = nullptr;
+	m_mainCamera = nullptr;
+	m_cubemap = nullptr;
 }
-
-// CScene::CScene(ESCENES _eSceneNum)
-// {}
 
 CScene::~CScene()
 {
 	std::cout << "Cleaning Scene... \n";
 	// Clean up the memory allocated variables inside the class
 	// ========================================================
-	delete m_MainCamera;
-	m_cCubeMap = nullptr;
+	delete m_mainCamera;
+	m_cubemap = nullptr;
 
 	for (auto obj : m_vGameObj)
 	{
@@ -50,27 +41,52 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene()
-{
+void CScene::InitailizeScene() { m_vGameObj.resize(0); }
 
+void CScene::BeginPlay()
+{
+	for (auto obj : m_vGameObj)
+	{
+		obj->InitializeObject();
+	}
 }
 
 void CScene::RenderScene()
 {
 	//m_cCubeMap->Render(m_MainCamera);
 
-	for (CGameObject* gameObject : m_vGameObj)
+	if (!m_vGameObj.empty())
 	{
-		CSpriteRenderComponent* spriteRenderer
-			= gameObject->GetComponent<CSpriteRenderComponent>();
-		if (spriteRenderer)
+		for (CGameObject* gameObject : m_vGameObj)
 		{
-			spriteRenderer->RenderSprite(m_MainCamera);
-			continue;
-		}
+			CSpriteRenderComponent* spriteRenderer
+				= gameObject->GetComponent<CSpriteRenderComponent>();
+			if (spriteRenderer)
+			{
+				//std::cout << "rendering sprite" << std::endl;
+				spriteRenderer->Render(m_mainCamera);
+				continue;
+			}
 
-		//else if (gameObject->GetComponent<CSpriteRenderComponent>())
+			//else if (gameObject->GetComponent<CSpriteRenderComponent>())
+		}
 	}
+	
+}
+
+void CScene::ResetScene()
+{
+	CDebug::Log("Resetting Scene: " + m_sceneName);
+
+	m_cubemap = nullptr;
+
+	m_mainCamera = nullptr;
+
+	for (auto obj : m_vGameObj)
+	{
+		delete obj;
+	}
+	m_vGameObj.clear();
 }
 
 void CScene::UpdateScene()
@@ -133,11 +149,13 @@ void CScene::UpdateScene()
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {
+	_gameobj->InitializeObject();
 	m_vGameObj.push_back(_gameobj);
 }
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
+	_gameobj->InitializeObject();
 	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
 }
@@ -147,6 +165,7 @@ void CScene::Instantiate(CGameObject * _gameobj,
 	glm::vec3 _rotation, 
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f))
 {
+	_gameobj->InitializeObject();
 	_gameobj->m_transform.position = _pos;
 	_gameobj->m_transform.rotation = _rotation;
 	_gameobj->m_transform.scale = _scale;
@@ -161,7 +180,7 @@ void CScene::DestroyObject(CGameObject* _gameobj)
 		{
 			delete (*iter);
 			m_vGameObj.erase(iter);
-			break;
+			return;
 		}
 	}
 }

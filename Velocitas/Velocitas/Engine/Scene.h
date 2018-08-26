@@ -17,25 +17,30 @@ public:
 	~CScene();
 
 	virtual void InitailizeScene();
-	virtual void UpdateScene();
+	void BeginPlay();
+	void UpdateScene();
 	void RenderScene();
+	void ResetScene();
 
-	void CheckCollision();
+	//void CheckCollision();
 
 	void Instantiate(CGameObject* _gameobj);
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos);
-	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale);
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale, glm::vec3 _rotation);
 	void DestroyObject(CGameObject* _gameobj);
 
 	std::vector<CGameObject*> GetObjectVec() const;
 
+
+public:
+
+	std::string m_sceneName;
+
 protected:
-	std::string sceneName;
+	
+	CCamera* m_mainCamera;
 
-	CCamera* m_MainCamera;
-
-	CCubeMap * m_cCubeMap;
+	CCubeMap* m_cubemap;
 
 	std::vector<CGameObject*> m_vGameObj;
 

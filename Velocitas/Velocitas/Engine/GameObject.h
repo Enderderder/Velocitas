@@ -79,5 +79,38 @@ protected:
 
 };
 
+template<typename T>
+T* CGameObject::CreateComponent()
+{
+	CComponent* newComponent = new T();
+	newComponent->SetGameObject(this);
+
+	T* resultComponent = dynamic_cast<T*>(newComponent);
+
+	if (resultComponent != nullptr)
+	{
+		std::cout << "component pushed" << std::endl;
+		m_components.push_back(resultComponent);
+	}
+
+
+	return resultComponent;
+}
+
+template<typename T>
+T* CGameObject::GetComponent() const
+{
+
+	for (CComponent* iter : m_components)
+	{
+		T* component = dynamic_cast<T*>(iter);
+		if (component != nullptr)
+		{
+			return component;
+		}
+	}
+
+	return nullptr;
+}
 
 #endif // !GAMEOBJECT_H

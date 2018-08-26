@@ -1,23 +1,10 @@
-//
-// Bachelor of Software Engineering
-// Media Design School
-// Auckland
-// New Zealand
-//
-// (c) 2018 Media Design School
-//
-// File Name    : Camera.cpp
-// Description	: 
-// Author       : Richard Wulansari & Jacob Dewse
-// Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
-//
 
 // This Include
 #include "Camera.h"
 
 CCamera::CCamera() :
-	m_CameraPosition(glm::vec3(0.0f, 20.0f, 30.0f)),
-	m_CameraFacing(glm::vec3(0.0f, -0.8f, -1.0f)),
+	m_CameraPosition(glm::vec3(0.0f, 0.0f, 10.0f)),
+	m_CameraFacing(glm::vec3(0.0f, 0.0f, -1.0f)),
 	m_CameraNormal(glm::vec3(0.0f, 1.0f, 0.0f))
 {
 	CalcViewMatrix();
@@ -50,7 +37,7 @@ void CCamera::CalcViewMatrix()
 {
 	m_ViewMatrix = glm::lookAt(
 		m_CameraPosition, 
-		m_CameraPosition + m_CameraFacing, 
+		m_CameraPosition + m_CameraFacing,
 		m_CameraNormal);
 }
 
@@ -60,8 +47,11 @@ glm::mat4 CCamera::GetProj() const
 }
 void CCamera::SetProjectionMatrix()
 {
-	m_ProjectionMatrix = glm::perspective(45.0f, 
-		(float)util::SCR_WIDTH / (float)util::SCR_HEIGHT, 0.1f, 3000.0f);
+	m_ProjectionMatrix = glm::ortho((float)-(util::SCR_WIDTH / 2), (float)(util::SCR_WIDTH / 2),
+		(float)-(util::SCR_HEIGHT / 2), (float)(util::SCR_HEIGHT / 2), 0.1f, 100.0f);
+
+// 	m_ProjectionMatrix = glm::perspective(45.0f, 
+// 		(float)util::SCR_WIDTH / (float)util::SCR_HEIGHT, 0.1f, 3000.0f);
 }
 
 void CCamera::SetProjectionMatrix(float _fov)

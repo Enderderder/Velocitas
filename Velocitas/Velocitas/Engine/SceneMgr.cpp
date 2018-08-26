@@ -1,22 +1,12 @@
-/*
-// Bachelor of Software Engineering
-// Media Design School
-// Auckland
-// New Zealand
-//
-// (c) 2018 Media Design School
-//
-// File Name    : SceneMgr.cpp
-// Description	: 
-// Author       : Richard Wulansari & Jacob Dewse
-// Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
-*/
 
 // This Include
 #include "SceneMgr.h"
 
 // Local Include
-#include "Utility.h"
+#include "Scene.h"
+#include "Debug.h"
+
+#include "Game/TestScene.h"
 
 // Static Variable
 CSceneMgr* CSceneMgr::s_pSceneMgr = nullptr;
@@ -37,51 +27,61 @@ void CSceneMgr::DestroyInstance()
 	s_pSceneMgr = nullptr;
 }
 
-void CSceneMgr::InitializeSceneMgr()
+void CSceneMgr::InitializeScenes()
 {
-	m_vScenes.push_back(new CScene());
-	m_vScenes.push_back(new CScene());
-	//m_vScenes.push_back(new CSinglePlayerScene());
-	m_vScenes.push_back(new CScene());
-	m_vScenes.push_back(new CScene());
-	//m_vScenes.push_back(new CLobbyScene());
-
-	m_eCurrentScene = MAINMENU;
-	//m_vScenes[m_eCurrentScene]->InitialiseScene(m_eCurrentScene);
+	/** Create scenes that is going to build in the game */
+	CreateNewScene("Test Scene", new CTestScene());
+	
+	/** Run the first scene */
+	if (!m_scenes.empty())
+	{
+		auto iter = m_scenes.begin();
+		m_runningScene = iter->second;
+		m_runningScene->InitailizeScene();
+		m_runningScene->BeginPlay();
+	}
 }
 
 void CSceneMgr::RenderCurrentScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	m_vScenes[m_eCurrentScene]->RenderScene();
+	m_runningScene->RenderScene();
 }
 
 void CSceneMgr::UpdateCurrentScene()
 {
 	// Only Proccess the current running scene
-	m_vScenes[m_eCurrentScene]->UpdateScene();
+	m_runningScene->UpdateScene();
 }
 
-void CSceneMgr::SwapScene(ESCENES _eSceneNum)
+void CSceneMgr::CreateNewScene(std::string _name, CScene* _scene)
 {
-	// Reset the current scene
-	delete m_vScenes[m_eCurrentScene];
-	m_vScenes[m_eCurrentScene] = new CScene();
-
-	// Jump to another scene and initialise it
-	m_eCurrentScene = _eSceneNum;
-	m_vScenes[m_eCurrentScene]->(m_eCurrentScene);
+	_scene->m_sceneName = _name;
+	m_scenes.insert(std::pair<std::string, CScene*>(_name, _scene));
 }
 
-CScene * CSceneMgr::GetCurrentScene() const
+void CSceneMgr::LoadScene(std::string _name)
 {
-	return m_vScenes[m_eCurrentScene];
+	// Jump to another scene and initialise 
+	for (auto iter = m_scenes.begin(); iter != m_scenes.end(); ++iter)
+	{
+		if (iter->first == _name)
+		{
+			// Reset the current scene
+			m_runningScene->ResetScene();
+
+			// Assign the runnig scene to the new scene and initiate it
+			m_runningScene = iter->second;
+			m_runningScene->InitailizeScene();
+			m_runningScene->BeginPlay();
+		}
+	}
 }
 
-ESCENES CSceneMgr::GetCurrentSceneEnum() const
+CScene* CSceneMgr::GetRunningScene() const
 {
-	return m_eCurrentScene;
+	return m_runningScene;
 }
 
 CSceneMgr::CSceneMgr()
@@ -89,9 +89,9 @@ CSceneMgr::CSceneMgr()
 
 CSceneMgr::~CSceneMgr()
 {
-	for (auto scene : m_vScenes)
+	for (auto iter = m_scenes.begin(); iter != m_scenes.end(); ++iter)
 	{
-		delete scene;
+		delete iter->second;
 	}
-	m_vScenes.clear();
+	m_scenes.clear();
 }

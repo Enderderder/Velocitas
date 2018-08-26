@@ -7,11 +7,11 @@
 class CSpriteRenderComponent;
 
 
-class CSpceShip : public CGameObject
+class CSpaceShip : public CGameObject
 {
 public:
-	CSpceShip();
-	~CSpceShip();
+	CSpaceShip();
+	~CSpaceShip();
 
 
 	virtual void InitializeObject() override;
