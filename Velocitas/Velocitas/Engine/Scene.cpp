@@ -155,6 +155,7 @@ void CScene::Instantiate(CGameObject * _gameobj)
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
+	_gameobj->InitializeObject();
 	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
 }
@@ -164,6 +165,7 @@ void CScene::Instantiate(CGameObject * _gameobj,
 	glm::vec3 _rotation, 
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f))
 {
+	_gameobj->InitializeObject();
 	_gameobj->m_transform.position = _pos;
 	_gameobj->m_transform.rotation = _rotation;
 	_gameobj->m_transform.scale = _scale;
@@ -178,7 +180,7 @@ void CScene::DestroyObject(CGameObject* _gameobj)
 		{
 			delete (*iter);
 			m_vGameObj.erase(iter);
-			break;
+			return;
 		}
 	}
 }
