@@ -4,6 +4,7 @@
 // Local Include
 #include "GameObject.h"
 #include "SpriteRenderComponent.h"
+#include "Debug.h"
 //#include "Player.h"
 //#include "PowerUps.h"
 //#include "AssetMgr.h"
@@ -18,21 +19,17 @@
 
 CScene::CScene()
 {
-
-	m_MainCamera = nullptr;
-	m_cCubeMap = nullptr;
+	m_mainCamera = nullptr;
+	m_cubemap = nullptr;
 }
-
-// CScene::CScene(ESCENES _eSceneNum)
-// {}
 
 CScene::~CScene()
 {
 	std::cout << "Cleaning Scene... \n";
 	// Clean up the memory allocated variables inside the class
 	// ========================================================
-	delete m_MainCamera;
-	m_cCubeMap = nullptr;
+	delete m_mainCamera;
+	m_cubemap = nullptr;
 
 	for (auto obj : m_vGameObj)
 	{
@@ -67,7 +64,7 @@ void CScene::RenderScene()
 			if (spriteRenderer)
 			{
 				//std::cout << "rendering sprite" << std::endl;
-				spriteRenderer->Render(m_MainCamera);
+				spriteRenderer->Render(m_mainCamera);
 				continue;
 			}
 
@@ -79,6 +76,12 @@ void CScene::RenderScene()
 
 void CScene::ResetScene()
 {
+	CDebug::Log("Resetting Scene: " + m_sceneName);
+
+	m_cubemap = nullptr;
+
+	m_mainCamera = nullptr;
+
 	for (auto obj : m_vGameObj)
 	{
 		delete obj;
@@ -146,6 +149,7 @@ void CScene::UpdateScene()
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {
+	_gameobj->InitializeObject();
 	m_vGameObj.push_back(_gameobj);
 }
 

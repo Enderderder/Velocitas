@@ -34,13 +34,13 @@ public:
 
 public:
 
-	std::string sceneName;
+	std::string m_sceneName;
 
 protected:
 	
-	CCamera* m_MainCamera;
+	CCamera* m_mainCamera;
 
-	CCubeMap * m_cCubeMap;
+	CCubeMap* m_cubemap;
 
 	std::vector<CGameObject*> m_vGameObj;
 

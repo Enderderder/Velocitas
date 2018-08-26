@@ -57,22 +57,24 @@ void CSceneMgr::UpdateCurrentScene()
 
 void CSceneMgr::CreateNewScene(std::string _name, CScene* _scene)
 {
-	_scene->sceneName = _name;
+	_scene->m_sceneName = _name;
 	m_scenes.insert(std::pair<std::string, CScene*>(_name, _scene));
 }
 
 void CSceneMgr::LoadScene(std::string _name)
 {
-	// Reset the current scene
-	m_runningScene->ResetScene();
-
 	// Jump to another scene and initialise 
 	for (auto iter = m_scenes.begin(); iter != m_scenes.end(); ++iter)
 	{
 		if (iter->first == _name)
 		{
+			// Reset the current scene
+			m_runningScene->ResetScene();
+
+			// Assign the runnig scene to the new scene and initiate it
 			m_runningScene = iter->second;
 			m_runningScene->InitailizeScene();
+			m_runningScene->BeginPlay();
 		}
 	}
 }

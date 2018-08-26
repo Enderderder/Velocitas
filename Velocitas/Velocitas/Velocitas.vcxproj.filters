@@ -79,6 +79,9 @@
     <Filter Include="Framework\Debug">
       <UniqueIdentifier>{74918b90-989e-41d3-8787-2afa7efda493}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Component\RigibodyComponent">
+      <UniqueIdentifier>{4ce83c84-e4ee-4df1-826d-3df9b6337bdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">

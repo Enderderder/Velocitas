@@ -11,9 +11,13 @@ void CTestScene::InitailizeScene()
 {
 	__super::InitailizeScene();
 
+	/** Configuration */
+
+	this->m_sceneName = "Test Scene";
+
 	/** Create Camera Object */
 
-	this->m_MainCamera = new CCamera();
+	this->m_mainCamera = new CCamera();
 	
 	/** Create game objects in the scenes */
 
