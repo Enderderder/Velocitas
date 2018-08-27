@@ -75,7 +75,10 @@ void CGameObject::InitializeObject()
 
 void CGameObject::Update() 
 {
-
+	for (auto iter : m_components)
+	{
+		iter->Update();
+	}
 }
 
 void CGameObject::DestroyObject()

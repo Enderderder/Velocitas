@@ -29,6 +29,8 @@ public:
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale, glm::vec3 _rotation);
 	void DestroyObject(CGameObject* _gameobj);
 
+	b2World* GetWorld() const;
+
 	std::vector<CGameObject*> GetObjectVec() const;
 
 

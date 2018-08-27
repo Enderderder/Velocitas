@@ -89,10 +89,8 @@ T* CGameObject::CreateComponent()
 
 	if (resultComponent != nullptr)
 	{
-		std::cout << "component pushed" << std::endl;
 		m_components.push_back(resultComponent);
 	}
-
 
 	return resultComponent;
 }

@@ -85,16 +85,14 @@ void CScene::RenderScene()
 	{
 		for (CGameObject* gameObject : m_vGameObj)
 		{
-			CSpriteRenderComponent* spriteRenderer
-				= gameObject->GetComponent<CSpriteRenderComponent>();
-			if (spriteRenderer)
+			// GameObject.render()
+
+			if (CSpriteRenderComponent* spriteRenderer
+				= gameObject->GetComponent<CSpriteRenderComponent>())
 			{
-				//std::cout << "rendering sprite" << std::endl;
 				spriteRenderer->Render(m_mainCamera);
 				continue;
 			}
-
-			//else if (gameObject->GetComponent<CSpriteRenderComponent>())
 		}
 	}
 	
@@ -209,6 +207,11 @@ void CScene::DestroyObject(CGameObject* _gameobj)
 			return;
 		}
 	}
+}
+
+b2World* CScene::GetWorld() const
+{
+	return m_box2DWorld;
 }
 
 std::vector<CGameObject*> CScene::GetObjectVec() const

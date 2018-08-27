@@ -5,6 +5,7 @@
 
 // Forward Declare
 class CSpriteRenderComponent;
+class CRigiBody2DComponent;
 
 class CSpaceShip : public CGameObject
 {
@@ -19,6 +20,6 @@ public:
 private:
 
 	CSpriteRenderComponent* m_spriteRenderer;
-
+	CRigiBody2DComponent* m_rigidBody;
 };
 
