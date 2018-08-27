@@ -115,6 +115,9 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	glm::vec3 scale = _transform.scale;
 	glm::vec3 rotation = _transform.rotation;
 
+	std::cout << position.x << std::endl;
+	std::cout << rotation.x << rotation.y << std::endl;
+
 
 	glm::mat4 objTranslate = glm::translate(glm::mat4(), position);
 	glm::mat4 objScale = glm::scale(glm::mat4(), scale);

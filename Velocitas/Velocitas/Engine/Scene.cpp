@@ -54,10 +54,7 @@ void CScene::InitailizeScene()
 
 void CScene::BeginPlay()
 {
-	for (auto obj : m_vGameObj)
-	{
-		obj->InitializeObject();
-	}
+
 }
 
 void CScene::RenderScene()
@@ -74,7 +71,7 @@ void CScene::RenderScene()
 				= gameObject->GetComponent<CSpriteRenderComponent>())
 			{
 				spriteRenderer->Render(m_mainCamera);
-				continue;
+				//continue;
 			}
 		}
 	}

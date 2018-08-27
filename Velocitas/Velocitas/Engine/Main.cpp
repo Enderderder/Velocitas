@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 	glutInitWindowSize(util::SCR_WIDTH, util::SCR_HEIGHT);
 	glutCreateWindow("Velocitas");
 	glEnable(GL_MULTISAMPLE);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// Set Clear Screen Color
 	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
@@ -67,7 +67,7 @@ void InititializeProgram()
 	p_Time->Initialize();
 	p_Asset->InitializeAssets();
 	p_SceneMgr->InitializeScenes();
-
+	CInput::GetInstance()->InitializeInput();
 	//m_pSound.PlaySound();
 	//cInputMgr->InitializeInput();
 	//CAssetMgr::GetInstance()->InitializeAssets();
@@ -101,6 +101,7 @@ void Update()
 	p_Time->Update();
 
 	// Update whats currently running
+	CInput::GetInstance()->Update(p_Time->GetTick());
 	p_SceneMgr->UpdateCurrentScene(p_Time->GetTick());
 
 	// Full Screen Control

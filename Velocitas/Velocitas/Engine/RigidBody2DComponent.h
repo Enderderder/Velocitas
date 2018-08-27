@@ -14,12 +14,12 @@ public:
 	virtual void Update(float _tick) override;
 	virtual void Initialize() override;
 	virtual void OnDestroy() override;
-
-	void CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType);
+	b2Body* GetBody();
+	void CreateBody(b2World* _world, b2BodyType BodyType,
+		bool bCanRotate = true, bool bHasFixture = true, float Density = 1.0f, float Friction = 0.3f, int fixtureType = 0);
 
 private:
 
 	b2Body* m_body;
 	Transform m_transform;
-	bool m_bHasFixture;
 };

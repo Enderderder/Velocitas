@@ -59,7 +59,6 @@ CGameObject::CGameObject()
 {
 	m_ShouldDestroyed = false;
 	m_isActive = true;
-	m_transform.gameObject = this;
 }
 
 CGameObject::~CGameObject()
