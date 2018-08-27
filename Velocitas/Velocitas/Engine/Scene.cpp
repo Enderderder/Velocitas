@@ -69,10 +69,11 @@ void CScene::RenderScene()
 		for (CGameObject* gameObject : m_vGameObj)
 		{
 			// GameObject.render()
-
+			
 			if (CSpriteRenderComponent* spriteRenderer
 				= gameObject->GetComponent<CSpriteRenderComponent>())
 			{
+				
 				spriteRenderer->Render(m_mainCamera);
 				continue;
 			}

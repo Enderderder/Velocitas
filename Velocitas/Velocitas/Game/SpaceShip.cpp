@@ -26,7 +26,7 @@ void CSpaceShip::InitializeObject()
 	/** Set the sprite for the object */
 	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
-
+	m_spriteRenderer->GetGameObject()->m_transform.position = glm::vec3(100.0f,0.0f,0.0f);
 	/** Set RigidBody */
 	
 }
