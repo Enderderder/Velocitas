@@ -31,9 +31,9 @@ void CSpaceShip::InitializeObject()
 	
 }
 
-void CSpaceShip::Update()
+void CSpaceShip::Update(float _tick)
 {
-	__super::Update();
+	__super::Update(_tick);
 	
 	//CInput::GetInstance()->g_cKeyState[]
 }

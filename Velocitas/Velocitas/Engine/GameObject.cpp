@@ -73,11 +73,11 @@ void CGameObject::InitializeObject()
 	}
 }
 
-void CGameObject::Update() 
+void CGameObject::Update(float _tick) 
 {
 	for (auto iter : m_components)
 	{
-		iter->Update();
+		iter->Update(_tick);
 	}
 }
 

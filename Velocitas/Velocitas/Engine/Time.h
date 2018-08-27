@@ -27,13 +27,14 @@ private:
 
 	float deltaTime;
 	float oldTime, newTime;
-
-
+	float deltaTimeTick;
+	float TickTime;
 public:
 
 	void Initialize();
 	void Update();
 
 	float GetDeltaTime() const;
+	float GetTick() const;
 
 };
