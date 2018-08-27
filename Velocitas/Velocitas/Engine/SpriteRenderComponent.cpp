@@ -35,3 +35,12 @@ void CSpriteRenderComponent::SetProgram(GLuint _programID)
 {
 	m_programID = _programID;
 }
+
+CSprite* CSpriteRenderComponent::GetSprite()
+{
+	if (m_sprite)
+	{
+		return m_sprite;
+	}
+	return nullptr;
+}

@@ -136,3 +136,13 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	glBindVertexArray(0);
 	glUseProgram(0);
 }
+
+int CSprite::GetHeight()
+{
+	return m_iHeight;
+}
+
+int CSprite::GetWidth()
+{
+	return m_iWidth;
+}
