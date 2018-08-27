@@ -85,7 +85,12 @@ enum InputMouse
 };
 
 //----------------------------------------------------------------------------------------------
-
+struct Transform
+{
+	glm::vec3 Position;
+	glm::vec3 Rotation;
+	glm::vec3 Scale;
+};
 
 
 #endif // !_UTILITY_H

@@ -31,15 +31,17 @@ void CRigiBody2DComponent::OnDestroy()
 
 }
 
-void CRigiBody2DComponent::CreateBody(b2World* _world)
+void CRigiBody2DComponent::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	b2Vec2 bodyPosition = b2Vec2(
-		this->m_gameObject->m_transform.position.x, 
-		this->m_gameObject->m_transform.position.y);
-	bodyDef.position.Set(bodyPosition.x, bodyPosition.y);
+	bodyDef.type = BodyType;
+	bodyDef.position.Set(m_transform.Position.x, m_transform.Position.y);
 	m_body = _world->CreateBody(&bodyDef);
+	m_body->SetTransform(bodyDef.position, (m_transform.Rotation.z / 180) * b2_pi);
+	m_body->SetFixedRotation(!bCanRotate);
+
+	b2PolygonShape dynamicBox;
+	if()
 
 	if (m_bHasFixture)
 	{

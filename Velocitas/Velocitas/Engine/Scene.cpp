@@ -54,23 +54,6 @@ void CScene::InitailizeScene()
 
 void CScene::BeginPlay()
 {
-	if (!m_vGameObj.empty())
-	{
-		for (CGameObject* gameObject : m_vGameObj)
-		{
-			CSpriteRenderComponent* spriteRenderer
-				= gameObject->GetComponent<CSpriteRenderComponent>();
-			if (spriteRenderer)
-			{
-				//std::cout << "rendering sprite" << std::endl;
-				spriteRenderer->Render(m_mainCamera);
-				continue;
-			}
-
-			//else if (gameObject->GetComponent<CSpriteRenderComponent>())
-		}
-	}
-
 	for (auto obj : m_vGameObj)
 	{
 		obj->InitializeObject();
