@@ -15,6 +15,11 @@ CGameObject* CComponent::GetGameObject() const
 	return m_gameObject;
 }
 
+CGameObject* CComponent::GetOwner() const
+{
+	return m_gameObject;
+}
+
 void CComponent::SetActive(bool _b)
 {
 	m_isActive = _b;

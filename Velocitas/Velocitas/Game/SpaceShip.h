@@ -5,7 +5,7 @@
 
 // Forward Declare
 class CSpriteRenderComponent;
-
+class CRigiBody2DComponent;
 
 class CSpaceShip : public CGameObject
 {
@@ -15,11 +15,11 @@ public:
 
 
 	virtual void InitializeObject() override;
-	virtual void Update() override;
+	virtual void Update(float _tick) override;
 
 private:
 
 	CSpriteRenderComponent* m_spriteRenderer;
-
+	CRigiBody2DComponent* m_rigidBody;
 };
 

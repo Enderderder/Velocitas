@@ -6,12 +6,14 @@
 #include "Engine/AssetMgr.h"
 #include "Engine/Component.h"
 #include "Engine/SpriteRenderComponent.h"
-#include <Box2D.h>
+#include "Engine/RigidBody2DComponent.h"
+#include "Engine/Input.h"
 
 
 CSpaceShip::CSpaceShip()
 {
 	m_spriteRenderer = CreateComponent<CSpriteRenderComponent>();
+	m_rigidBody = CreateComponent<CRigiBody2DComponent>();
 }
 
 CSpaceShip::~CSpaceShip()
@@ -25,13 +27,13 @@ void CSpaceShip::InitializeObject()
 	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
 
-	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Player"));
-	//this->m_transform.scale = glm::vec3(1000.0f, 1000.0f, 1000.0f);
+	/** Set RigidBody */
+	
 }
 
-void CSpaceShip::Update()
+void CSpaceShip::Update(float _tick)
 {
-	__super::Update();
+	__super::Update(_tick);
 	
-
+	//CInput::GetInstance()->g_cKeyState[]
 }

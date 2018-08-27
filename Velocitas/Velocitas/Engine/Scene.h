@@ -17,8 +17,8 @@ public:
 	~CScene();
 
 	virtual void InitailizeScene();
+	virtual void UpdateScene(float _tick);
 	void BeginPlay();
-	void UpdateScene();
 	void RenderScene();
 	void ResetScene();
 
@@ -28,6 +28,8 @@ public:
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos);
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale, glm::vec3 _rotation);
 	void DestroyObject(CGameObject* _gameobj);
+
+	b2World* GetWorld() const;
 
 	std::vector<CGameObject*> GetObjectVec() const;
 
@@ -43,6 +45,9 @@ protected:
 	CCubeMap* m_cubemap;
 
 	std::vector<CGameObject*> m_vGameObj;
+
+	b2Vec2 m_gravity;
+	b2World* m_box2DWorld;
 
 private:
 

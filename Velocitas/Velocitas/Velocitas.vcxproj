@@ -63,6 +63,7 @@
     <ClCompile Include="Engine\Time.cpp" />
     <ClCompile Include="Game\SpaceShip.cpp" />
     <ClCompile Include="Game\TestScene.cpp" />
+    <ClCompile Include="LevelLoading.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs" />

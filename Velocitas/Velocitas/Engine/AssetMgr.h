@@ -30,6 +30,9 @@ protected:
 
 public:
 
+	/**
+	 * This is where to import all the game assets
+	 */
 	void InitializeAssets();
 
 	CSprite* GetSprite(std::string _name) const;
