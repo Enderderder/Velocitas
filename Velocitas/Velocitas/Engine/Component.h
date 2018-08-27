@@ -27,6 +27,8 @@ public:
 	virtual void Initialize() {}
 	virtual void OnDestroy() {}
 
+	CGameObject* GetOwner() const;
+
 	void SetActive(bool);
 	bool IsActive() const;
 };
