@@ -19,6 +19,7 @@ public:
 
 private:
 
-	b2BodyDef m_bodyDef;
 	b2Body* m_body;
+
+	bool m_bHasFixture;
 };

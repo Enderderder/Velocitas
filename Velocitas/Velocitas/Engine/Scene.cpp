@@ -4,7 +4,9 @@
 // Local Include
 #include "GameObject.h"
 #include "SpriteRenderComponent.h"
+#include "RigidBody2DComponent.h"
 #include "Debug.h"
+#include "Camera.h"
 //#include "Player.h"
 //#include "PowerUps.h"
 //#include "AssetMgr.h"
@@ -12,7 +14,6 @@
 //#include "ModelMgr.h"
 //#include "SceneMgr.h"
 //#include "Input.h"
-//#include "Camera.h"
 //#include "CAIMgr.h"
 //#include "CubeMap.h"
 //#include "TextLabel.h"
@@ -38,6 +39,8 @@ CScene::~CScene()
 	}
 	m_vGameObj.clear();
 
+	delete m_box2DWorld;
+
 	// ========================================================
 	std::cout << "Cleaning Done... \n";
 }
@@ -51,6 +54,23 @@ void CScene::InitailizeScene()
 
 void CScene::BeginPlay()
 {
+	if (!m_vGameObj.empty())
+	{
+		for (CGameObject* gameObject : m_vGameObj)
+		{
+			CSpriteRenderComponent* spriteRenderer
+				= gameObject->GetComponent<CSpriteRenderComponent>();
+			if (spriteRenderer)
+			{
+				//std::cout << "rendering sprite" << std::endl;
+				spriteRenderer->Render(m_mainCamera);
+				continue;
+			}
+
+			//else if (gameObject->GetComponent<CSpriteRenderComponent>())
+		}
+	}
+
 	for (auto obj : m_vGameObj)
 	{
 		obj->InitializeObject();

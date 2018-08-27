@@ -6,7 +6,6 @@
 // Forward Declare
 class CSpriteRenderComponent;
 
-
 class CSpaceShip : public CGameObject
 {
 public:

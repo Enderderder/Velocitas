@@ -18,7 +18,6 @@
 #include <vector>
 #include <map>
 #include <chrono>
-#include <WS2tcpip.h>
 #include <strstream>
 #include <Windows.h>
 #include <cassert>
