@@ -22,5 +22,6 @@ void CTestScene::InitailizeScene()
 	/** Create game objects in the scenes */
 
 	this->m_vGameObj.push_back(new CSpaceShip());
+	
 
 }

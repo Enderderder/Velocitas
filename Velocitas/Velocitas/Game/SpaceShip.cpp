@@ -25,7 +25,7 @@ void CSpaceShip::InitializeObject()
 	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
 
-
+	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Player"));
 	//this->m_transform.scale = glm::vec3(1000.0f, 1000.0f, 1000.0f);
 }
 
