@@ -96,7 +96,7 @@ void CScene::ResetScene()
 	m_vGameObj.clear();
 }
 
-void CScene::UpdateScene()
+void CScene::UpdateScene(float _tick)
 {
 	//m_MainCamera->UpdateCamera();
 
@@ -110,7 +110,7 @@ void CScene::UpdateScene()
 	size_t currVecSize = m_vGameObj.size();
 	for (size_t index = 0; index < currVecSize; ++index)
 	{
-		m_vGameObj[index]->Update();
+		m_vGameObj[index]->Update(_tick);
 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
 	}
 

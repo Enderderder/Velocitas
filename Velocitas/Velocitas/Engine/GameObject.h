@@ -45,7 +45,7 @@ public:
 	/*
 	 * Call every frame
 	 */
-	virtual void Update();
+	virtual void Update(float _tick);
 	/**
 	* Try get the component of the gameobject
 	*/

@@ -16,7 +16,7 @@ CRigiBody2DComponent::~CRigiBody2DComponent()
 
 }
 
-void CRigiBody2DComponent::Update()
+void CRigiBody2DComponent::Update(float _tick)
 {
 
 }

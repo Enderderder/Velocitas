@@ -26,6 +26,9 @@ void CTestScene::InitailizeScene()
 	spaceShip->m_tag = "Player";
 	this->m_vGameObj.push_back(spaceShip);
 
+}
 
-
+void CTestScene::UpdateScene(float _tick)
+{
+	
 }

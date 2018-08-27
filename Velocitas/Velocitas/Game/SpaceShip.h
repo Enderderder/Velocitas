@@ -15,7 +15,7 @@ public:
 
 
 	virtual void InitializeObject() override;
-	virtual void Update() override;
+	virtual void Update(float _tick) override;
 
 private:
 

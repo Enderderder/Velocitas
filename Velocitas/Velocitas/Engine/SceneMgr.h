@@ -35,7 +35,7 @@ public:
 	// Member Functions
 	void InitializeScenes();
 	void RenderCurrentScene();
-	void UpdateCurrentScene();
+	void UpdateCurrentScene(float _tick);
 	void CreateNewScene(std::string _name, CScene* _scene);
 	void LoadScene(std::string _name);
 	CScene* GetRunningScene() const;

@@ -23,7 +23,7 @@ public:
 	void SetGameObject(CGameObject* _gameObject);
 	CGameObject* GetGameObject() const;
 
-	virtual void Update() {}
+	virtual void Update(float _tick) {}
 	virtual void Initialize() {}
 	virtual void OnDestroy() {}
 

@@ -17,8 +17,8 @@ public:
 	~CScene();
 
 	virtual void InitailizeScene();
+	virtual void UpdateScene(float _tick);
 	void BeginPlay();
-	void UpdateScene();
 	void RenderScene();
 	void ResetScene();
 
