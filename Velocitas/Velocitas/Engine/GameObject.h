@@ -1,9 +1,6 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-// Global Includes
-#include "Utility.h"
-
 // Forward Declare
 class CGameObject;
 class CComponent;

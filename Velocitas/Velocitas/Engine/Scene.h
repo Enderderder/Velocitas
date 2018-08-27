@@ -44,6 +44,9 @@ protected:
 
 	std::vector<CGameObject*> m_vGameObj;
 
+	b2Vec2 m_gravity;
+	b2World* m_box2DWorld;
+
 private:
 
 

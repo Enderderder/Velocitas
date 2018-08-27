@@ -21,6 +21,7 @@ CScene::CScene()
 {
 	m_mainCamera = nullptr;
 	m_cubemap = nullptr;
+	m_gravity = b2Vec2(0.0f, 9.81f);
 }
 
 CScene::~CScene()
@@ -41,7 +42,12 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene() { m_vGameObj.resize(0); }
+void CScene::InitailizeScene() 
+{ 
+	m_vGameObj.resize(0);
+
+	m_box2DWorld = new b2World(m_gravity);
+}
 
 void CScene::BeginPlay()
 {

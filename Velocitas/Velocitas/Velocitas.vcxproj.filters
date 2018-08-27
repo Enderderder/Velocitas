@@ -149,6 +149,9 @@
     <ClInclude Include="Game\SpaceShip.h">
       <Filter>Game\SpaceShip</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\RigiBody2DComponent.h">
+      <Filter>Framework\Component\RigibodyComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -207,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="Game\SpaceShip.cpp">
       <Filter>Game\SpaceShip</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RigiBody2DComponent.cpp">
+      <Filter>Framework\Component\RigibodyComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
