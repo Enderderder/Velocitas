@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-// Global Includes
+// Global Include
 #include "Utility.h"
 
 // Forward Declare
@@ -89,10 +89,8 @@ T* CGameObject::CreateComponent()
 
 	if (resultComponent != nullptr)
 	{
-		std::cout << "component pushed" << std::endl;
 		m_components.push_back(resultComponent);
 	}
-
 
 	return resultComponent;
 }

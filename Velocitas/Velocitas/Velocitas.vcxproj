@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -29,6 +29,7 @@
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\MeshComponent.h" />
+    <ClInclude Include="Engine\RigidBody2DComponent.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\SceneMgr.h" />
     <ClInclude Include="Engine\ShaderLoader.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="Engine\Input.cpp" />
     <ClCompile Include="Engine\Main.cpp" />
     <ClCompile Include="Engine\MeshComponent.cpp" />
+    <ClCompile Include="Engine\RigidBody2DComponent.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\SceneMgr.cpp" />
     <ClCompile Include="Engine\ShaderLoader.cpp" />
