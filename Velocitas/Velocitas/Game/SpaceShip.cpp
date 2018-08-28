@@ -126,7 +126,7 @@ void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 		b2Vec2 direction = b2Vec2(0.0f, 1.0f);
 		RotateVecotr(direction, m_fCurrentRotation);
 		direction.Normalize();
-		direction *= (float)up * 100000000000000000000000000000000.0f; // 10.0f;
+		direction *= (float)up * 10.0f; // 10.0f;
 		myBody->ApplyForceToCenter(direction, true);
 		this->m_transform.position = glm::vec3(myBody->GetPosition().x, myBody->GetPosition().y, 0.0f);
 		this->m_transform.rotation.z = m_fCurrentRotation;

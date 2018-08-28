@@ -75,7 +75,7 @@ template<typename T>
 T* CGameObject::CreateComponent()
 {
 	CComponent* newComponent = new T();
-	newComponent->SetGameObject(this);
+	newComponent->SetOwner(this);
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 

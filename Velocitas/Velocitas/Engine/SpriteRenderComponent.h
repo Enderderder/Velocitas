@@ -16,13 +16,14 @@ public:
 	CSpriteRenderComponent();
 	~CSpriteRenderComponent();
 
-	virtual void Initialize() override;
+	virtual void BeginPlay() override;
 
 	void Render(CCamera* camera);
 
 	void SetSprite(CSprite* _sprite);
 	void SetProgram(GLuint _programID);
 	CSprite* GetSprite();
+
 private:
 
 	CSprite* m_sprite;

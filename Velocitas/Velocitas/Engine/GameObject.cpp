@@ -68,7 +68,7 @@ void CGameObject::InitializeObject()
 {
 	for (auto iter : m_components)
 	{
-		iter->Initialize();
+		iter->BeginPlay();
 	}
 }
 
