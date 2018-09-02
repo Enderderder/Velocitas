@@ -152,6 +152,12 @@
     <ClInclude Include="Engine\RigidBody2DComponent.h">
       <Filter>Framework\Component\RigibodyComponent</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CXBOXController.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -213,6 +219,9 @@
     </ClCompile>
     <ClCompile Include="Engine\RigidBody2DComponent.cpp">
       <Filter>Framework\Component\RigibodyComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\CXBOXController.cpp">
+      <Filter>Framework\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

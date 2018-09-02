@@ -59,7 +59,6 @@ CGameObject::CGameObject()
 {
 	m_ShouldDestroyed = false;
 	m_isActive = true;
-	m_transform.gameObject = this;
 }
 
 CGameObject::~CGameObject()
@@ -69,7 +68,7 @@ void CGameObject::InitializeObject()
 {
 	for (auto iter : m_components)
 	{
-		iter->Initialize();
+		iter->BeginPlay();
 	}
 }
 

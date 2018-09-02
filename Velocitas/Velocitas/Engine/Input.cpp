@@ -15,8 +15,6 @@
 // This Include 
 #include "Input.h"
 
-// Local Include
-#include "Utility.h"
 
 // Static Variable
 CInput* CInput::s_pInput = nullptr;
@@ -52,6 +50,11 @@ void CInput::InitializeInput()
 	glutKeyboardFunc(InitKeyDown);
 	glutKeyboardUpFunc(InitKeyUp);
 	glutMouseFunc(InitMouse);
+
+	Players.push_back(new XBOXController(1));
+	Players.push_back(new XBOXController(2));
+	Players.push_back(new XBOXController(3));
+	Players.push_back(new XBOXController(4));
 }
 
 void CInput::Keyboard_Down(unsigned char key, int x, int y)
@@ -91,4 +94,14 @@ void CInput::InitKeyUp(unsigned char key, int x, int y)
 void CInput::InitMouse(int button, int glutState, int x, int y)
 {
 	CInput::GetInstance()->Mouse(button, glutState, x, y);
+}
+
+void CInput::Update(float _tick)
+{
+	for (auto& player : Players)
+	{
+		player->Update();
+	}
+
+		
 }

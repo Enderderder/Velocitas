@@ -22,7 +22,8 @@ CScene::CScene()
 {
 	m_mainCamera = nullptr;
 	m_cubemap = nullptr;
-	m_gravity = b2Vec2(0.0f, 9.81f);
+	m_gravity = b2Vec2(0.0f, -9.81f);
+	m_box2DWorld = new b2World(b2Vec2(0.0f, 0.0f));
 }
 
 CScene::~CScene()
@@ -48,16 +49,11 @@ CScene::~CScene()
 void CScene::InitailizeScene() 
 { 
 	m_vGameObj.resize(0);
-
-	m_box2DWorld = new b2World(m_gravity);
 }
 
 void CScene::BeginPlay()
 {
-	for (auto obj : m_vGameObj)
-	{
-		obj->InitializeObject();
-	}
+
 }
 
 void CScene::RenderScene()
@@ -69,13 +65,12 @@ void CScene::RenderScene()
 		for (CGameObject* gameObject : m_vGameObj)
 		{
 			// GameObject.render()
-			
+
 			if (CSpriteRenderComponent* spriteRenderer
 				= gameObject->GetComponent<CSpriteRenderComponent>())
 			{
-				
 				spriteRenderer->Render(m_mainCamera);
-				continue;
+				//continue;
 			}
 		}
 	}
@@ -99,7 +94,13 @@ void CScene::ResetScene()
 
 void CScene::UpdateScene(float _tick)
 {
-	//m_MainCamera->UpdateCamera();
+	float32 timeStep = 1.0f / 60.0f;
+	int32 velocityIterations = 6;
+	int32 positionIterations = 2;
+	if (_tick == 0)
+	{
+		m_box2DWorld->Step(timeStep, velocityIterations, positionIterations);
+	}
 
 	// Delete the object that should be deleted fron last frame
 	for (auto obj : m_vGameObj)

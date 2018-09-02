@@ -11,6 +11,9 @@
 // Author       : Richard Wulansari & Jacob Dewse
 // Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
 //
+#include "CXBOXController.h"
+// Local Include
+#include "Utility.h"
 
 #ifndef INPUT_H
 #define INPUT_H
@@ -18,6 +21,7 @@
 class CInput
 {
 public:
+
 	// Singletom Functions
 	static CInput* GetInstance();
 	static void DestroyInstance();
@@ -28,7 +32,9 @@ public:
 	static void InitKeyDown(unsigned char key, int x, int y);
 	static void InitKeyUp(unsigned char key, int x, int y);
 	static void InitMouse(int button, int glutState, int x, int y);
+	void Update(float _tick);
 
+	std::vector<class XBOXController*> Players;
 private:
 	// Make Singleton
 	CInput();
@@ -49,8 +55,8 @@ private: // Private Member Variables
 
 
 public: // Public Variables
-	unsigned char g_cKeyState[255];
-	unsigned char g_cMouseState[3];
+	unsigned int g_cKeyState[255];
+	unsigned int g_cMouseState[3];
 
 };
 

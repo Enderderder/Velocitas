@@ -15,7 +15,8 @@ public:
 
 	void CreateSprite(const char* _filePath /*, GLuint _programID*/);
 	void RenderSprite(Transform _transform, CCamera* _camera, GLuint _programID);
-
+	int GetHeight();
+	int GetWidth();
 private:
 	int m_iWidth;
 	int m_iHeight;

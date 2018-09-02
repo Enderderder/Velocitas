@@ -5,8 +5,9 @@
 // Inlcude the game classes
 #include "Game/GameClasses.h"
 #include "Engine/Camera.h"
-
-
+#include "Engine/RigidBody2DComponent.h"
+#include "Engine/SpriteRenderComponent.h"
+#include "Engine/AssetMgr.h"
 void CTestScene::InitailizeScene()
 {
 	__super::InitailizeScene();
@@ -21,15 +22,27 @@ void CTestScene::InitailizeScene()
 	
 	/** Create game objects in the scenes */
 
-	CGameObject* spaceShip = new CSpaceShip();
+	CGameObject* spaceShip = new CSpaceShip(1);
 	spaceShip->m_name = "Space Ship";
 	spaceShip->m_tag = "Player";
-	
 	this->m_vGameObj.push_back(spaceShip);
-	
+
+	CGameObject* spaceShip2 = new CSpaceShip(2);
+	spaceShip2->m_name = "Space Ship";
+	spaceShip2->m_tag = "Player";
+	this->m_vGameObj.push_back(spaceShip2);
+
+	for (auto obj : m_vGameObj)
+	{
+		obj->InitializeObject();
+	}
+	spaceShip2->GetComponent<CSpriteRenderComponent>()->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
+	spaceShip->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_dynamicBody, true, true, 1.0f, 0.0f, 1);
+	spaceShip2->m_transform.position = glm::vec3(100.0f, 100.0f, 0.0f);
+	spaceShip2->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_staticBody, true, true, 1.0f, 0.0f, 0);
 }
 
 void CTestScene::UpdateScene(float _tick)
 {
-	
+	__super::UpdateScene(_tick);
 }
