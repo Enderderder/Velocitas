@@ -82,6 +82,9 @@
     <Filter Include="Framework\Component\RigibodyComponent">
       <UniqueIdentifier>{4ce83c84-e4ee-4df1-826d-3df9b6337bdb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\LevelBlocks">
+      <UniqueIdentifier>{e3a7eefd-6c56-423a-974f-0b2e74bdbd2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -152,11 +155,11 @@
     <ClInclude Include="Engine\RigidBody2DComponent.h">
       <Filter>Framework\Component\RigibodyComponent</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Engine.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\CXBOXController.h">
       <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Blocks.h">
+      <Filter>Game\LevelBlocks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +226,7 @@
     <ClCompile Include="Engine\CXBOXController.cpp">
       <Filter>Framework\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Blocks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\CubeMap.fs">

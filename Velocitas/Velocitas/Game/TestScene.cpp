@@ -38,8 +38,10 @@ void CTestScene::InitailizeScene()
 	}
 	//spaceShip2->GetComponent<CSpriteRenderComponent>()->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 	spaceShip->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_dynamicBody, true, true, 1.0f, 0.0f, 1);
-	spaceShip2->m_transform.position = glm::vec3(100.0f, 100.0f, 0.0f);
+	//spaceShip2->m_transform.position = glm::vec3(100.0f, 100.0f, 0.0f);
 	spaceShip2->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_staticBody, true, true, 1.0f, 0.0f, 0);
+
+	spaceShip2->GetComponent<CSpriteRenderComponent>()->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
 }
 
 void CTestScene::UpdateScene(float _tick)
