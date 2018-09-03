@@ -37,8 +37,7 @@ int main(int argc, char **argv)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	// Set Clear Screen Color
-	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
+	
 
 	// Initialize OpenGL Library
 	glewInit();
@@ -89,6 +88,8 @@ void InititializeProgram()
 
 void Render()
 {
+	// Set Clear Screen Color
+	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
 	p_SceneMgr->RenderCurrentScene();
 
 	//g_FPSLabel->RenderTextLabel();
