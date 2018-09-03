@@ -3,6 +3,7 @@
 // Inherited Include
 #include "Component.h"
 #include "Utility.h"
+
 class CRigiBody2D : public CComponent
 {
 
@@ -15,11 +16,9 @@ public:
 	virtual void BeginPlay() override;
 	virtual void OnDestroy() override;
 	b2Body* GetBody();
-	void CreateBody();
+	
 	void CreateBody(b2World* _world, b2BodyType BodyType,
 		bool bCanRotate = true, bool bHasFixture = true, float Density = 1.0f, float Friction = 0.3f, int fixtureType = 0);
-
-
 
 	void SetBodyType(b2BodyType _bodyType);
 	b2BodyType GetBodyType() const;
@@ -29,6 +28,11 @@ public:
 
 	void SetHasFixture(bool _b);
 	bool GetHasFixture() const;
+
+private:
+
+	void CreateBody();
+
 
 private:
 

@@ -43,7 +43,7 @@ namespace util
 	// Define the screen size
 	static int SCR_WIDTH = 1366;
 	static int SCR_HEIGHT = 768;
-	static int PIXELUNIT = 1;
+	static int PIXELUNIT = 40;
 }
 
 // Define Struct -------------------------------------------------------------------------------

@@ -36,6 +36,11 @@ void CSpriteRender::SetSprite(CSprite* _sprite)
 	m_sprite = _sprite;
 }
 
+void CSpriteRender::SetSprite(std::string _name)
+{
+	m_sprite = CAssetMgr::GetInstance()->GetSprite(_name);
+}
+
 void CSpriteRender::SetProgram(GLuint _programID)
 {
 	m_programID = _programID;

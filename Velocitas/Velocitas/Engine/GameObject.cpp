@@ -64,7 +64,7 @@ CGameObject::CGameObject()
 CGameObject::~CGameObject()
 {}
 
-void CGameObject::InitializeObject() 
+void CGameObject::BeginPlay() 
 {
 	for (auto iter : m_components)
 	{

@@ -21,6 +21,8 @@ public:
 	void Render(CCamera* camera);
 
 	void SetSprite(CSprite* _sprite);
+	void SetSprite(std::string _name);
+
 	void SetProgram(GLuint _programID);
 	CSprite* GetSprite();
 

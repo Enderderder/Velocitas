@@ -14,6 +14,7 @@ CSpaceShip::CSpaceShip(int playerID)
 {
 	m_spriteRenderer = CreateComponent<CSpriteRender>();
 	m_rigidBody = CreateComponent<CRigiBody2D>();
+
 	m_iPlayerID = playerID;
 	bControllerInput = false;
 	m_fCurrentRotation = 0;
@@ -22,15 +23,14 @@ CSpaceShip::CSpaceShip(int playerID)
 CSpaceShip::~CSpaceShip()
 {}
 
-void CSpaceShip::InitializeObject()
+void CSpaceShip::BeginPlay()
 {
-	__super::InitializeObject();
+	__super::BeginPlay();
 	
 	/** Set the sprite for the object */
-	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Triangle"));
-	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
-	/** Set RigidBody */
-	
+	//m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Triangle"));
+	//m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
+
 }
 
 void CSpaceShip::Update(float _tick)

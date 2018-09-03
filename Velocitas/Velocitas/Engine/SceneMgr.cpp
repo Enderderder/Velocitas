@@ -37,7 +37,7 @@ void CSceneMgr::InitializeScenes()
 	{
 		auto iter = m_scenes.begin();
 		m_runningScene = iter->second;
-		m_runningScene->InitailizeScene();
+		m_runningScene->ConfigurateScene();
 		m_runningScene->BeginPlay();
 	}
 }
@@ -72,7 +72,7 @@ void CSceneMgr::LoadScene(std::string _name)
 
 			// Assign the runnig scene to the new scene and initiate it
 			m_runningScene = iter->second;
-			m_runningScene->InitailizeScene();
+			m_runningScene->ConfigurateScene();
 			m_runningScene->BeginPlay();
 		}
 	}

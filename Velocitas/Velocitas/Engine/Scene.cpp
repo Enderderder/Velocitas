@@ -3,7 +3,7 @@
 
 // Local Include
 #include "GameObject.h"
-#include "SpriteRenderComponent.h"
+#include "SpriteRender.h"
 #include "RigidBody2D.h"
 #include "Debug.h"
 #include "Camera.h"
@@ -46,14 +46,17 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene() 
+void CScene::ConfigurateScene() 
 { 
 	m_vGameObj.resize(0);
 }
 
 void CScene::BeginPlay()
 {
-
+	for (auto obj : m_vGameObj)
+	{
+		obj->BeginPlay();
+	}
 }
 
 void CScene::RenderScene()
@@ -158,13 +161,13 @@ void CScene::UpdateScene(float _tick)
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	m_vGameObj.push_back(_gameobj);
 }
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
 }
@@ -174,7 +177,7 @@ void CScene::Instantiate(CGameObject * _gameobj,
 	glm::vec3 _rotation, 
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f))
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	_gameobj->m_transform.position = _pos;
 	_gameobj->m_transform.rotation = _rotation;
 	_gameobj->m_transform.scale = _scale;

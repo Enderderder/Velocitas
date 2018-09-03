@@ -14,7 +14,7 @@ public:
 	~CSpaceShip();
 
 
-	virtual void InitializeObject() override;
+	virtual void BeginPlay() override;
 	virtual void Update(float _tick) override;
 	void MovementChecks();
 	void SetIsController(bool _bIsController);
