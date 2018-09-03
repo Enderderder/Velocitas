@@ -3,13 +3,13 @@
 // Inherited Include
 #include "Component.h"
 #include "Utility.h"
-class CRigiBody2DComponent : public CComponent
+class CRigiBody2D : public CComponent
 {
 
 public:
 
-	CRigiBody2DComponent();
-	~CRigiBody2DComponent();
+	CRigiBody2D();
+	~CRigiBody2D();
 
 	virtual void Update(float _tick) override;
 	virtual void BeginPlay() override;

@@ -128,9 +128,6 @@
     <ClInclude Include="Engine\MeshComponent.h">
       <Filter>Framework\Component\MeshComponent</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\SpriteRenderComponent.h">
-      <Filter>Framework\Component\SpriteRenderComponent</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Component.h">
       <Filter>Framework\Component</Filter>
     </ClInclude>
@@ -149,14 +146,14 @@
     <ClInclude Include="Game\SpaceShip.h">
       <Filter>Game\SpaceShip</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\RigidBody2DComponent.h">
-      <Filter>Framework\Component\RigibodyComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Engine.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\CXBOXController.h">
       <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RigidBody2D.h">
+      <Filter>Framework\Component\RigibodyComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SpriteRender.h">
+      <Filter>Framework\Component\SpriteRenderComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,9 +196,6 @@
     <ClCompile Include="Engine\MeshComponent.cpp">
       <Filter>Framework\Component\MeshComponent</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpriteRenderComponent.cpp">
-      <Filter>Framework\Component\SpriteRenderComponent</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
       <Filter>Framework\Component</Filter>
     </ClCompile>
@@ -217,11 +211,14 @@
     <ClCompile Include="Game\SpaceShip.cpp">
       <Filter>Game\SpaceShip</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\RigidBody2DComponent.cpp">
-      <Filter>Framework\Component\RigibodyComponent</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\CXBOXController.cpp">
       <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RigidBody2D.cpp">
+      <Filter>Framework\Component\RigibodyComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SpriteRender.cpp">
+      <Filter>Framework\Component\SpriteRenderComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

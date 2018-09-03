@@ -1,25 +1,25 @@
 // This include
-#include "SpriteRenderComponent.h"
+#include "SpriteRender.h"
 
 // Local Include
 #include "GameObject.h"
 #include "Sprite.h"
 #include "AssetMgr.h"
 
-CSpriteRenderComponent::CSpriteRenderComponent() 
+CSpriteRender::CSpriteRender() 
 {
 	m_sprite = CAssetMgr::GetInstance()->GetSprite("DefaultSprite");
 	m_programID = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
 }
 
-CSpriteRenderComponent::~CSpriteRenderComponent() {}
+CSpriteRender::~CSpriteRender() {}
 
-void CSpriteRenderComponent::BeginPlay()
+void CSpriteRender::BeginPlay()
 {
 	__super::BeginPlay();
 }
 
-void CSpriteRenderComponent::Render(CCamera* _camera)
+void CSpriteRender::Render(CCamera* _camera)
 {
 	if (GetOwner()->IsActive() == false
 		|| m_sprite == nullptr)
@@ -31,17 +31,17 @@ void CSpriteRenderComponent::Render(CCamera* _camera)
 		_camera, m_programID);
 }
 
-void CSpriteRenderComponent::SetSprite(CSprite* _sprite)
+void CSpriteRender::SetSprite(CSprite* _sprite)
 {
 	m_sprite = _sprite;
 }
 
-void CSpriteRenderComponent::SetProgram(GLuint _programID)
+void CSpriteRender::SetProgram(GLuint _programID)
 {
 	m_programID = _programID;
 }
 
-CSprite* CSpriteRenderComponent::GetSprite()
+CSprite* CSpriteRender::GetSprite()
 {
 	if (m_sprite)
 	{

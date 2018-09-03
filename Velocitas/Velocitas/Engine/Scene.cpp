@@ -4,7 +4,7 @@
 // Local Include
 #include "GameObject.h"
 #include "SpriteRenderComponent.h"
-#include "RigidBody2DComponent.h"
+#include "RigidBody2D.h"
 #include "Debug.h"
 #include "Camera.h"
 //#include "Player.h"
@@ -66,8 +66,8 @@ void CScene::RenderScene()
 		{
 			// GameObject.render()
 
-			if (CSpriteRenderComponent* spriteRenderer
-				= gameObject->GetComponent<CSpriteRenderComponent>())
+			if (CSpriteRender* spriteRenderer
+				= gameObject->GetComponent<CSpriteRender>())
 			{
 				spriteRenderer->Render(m_mainCamera);
 				//continue;

@@ -10,11 +10,11 @@
 class CCamera;
 class CSprite;
 
-class CSpriteRenderComponent : public CComponent
+class CSpriteRender : public CComponent
 {
 public:
-	CSpriteRenderComponent();
-	~CSpriteRenderComponent();
+	CSpriteRender();
+	~CSpriteRender();
 
 	virtual void BeginPlay() override;
 

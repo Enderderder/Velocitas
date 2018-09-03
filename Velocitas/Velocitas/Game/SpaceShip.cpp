@@ -5,15 +5,15 @@
 // Engine Include
 #include "Engine/AssetMgr.h"
 #include "Engine/Component.h"
-#include "Engine/SpriteRenderComponent.h"
-#include "Engine/RigidBody2DComponent.h"
+#include "Engine/SpriteRender.h"
+#include "Engine/RigidBody2D.h"
 #include "Engine/Input.h"
 #include "Engine/Utility.h"
 
 CSpaceShip::CSpaceShip(int playerID)
 {
-	m_spriteRenderer = CreateComponent<CSpriteRenderComponent>();
-	m_rigidBody = CreateComponent<CRigiBody2DComponent>();
+	m_spriteRenderer = CreateComponent<CSpriteRender>();
+	m_rigidBody = CreateComponent<CRigiBody2D>();
 	m_iPlayerID = playerID;
 	bControllerInput = false;
 	m_fCurrentRotation = 0;
@@ -98,11 +98,11 @@ void CSpaceShip::SetIsController(bool _bIsController)
 	bControllerInput = _bIsController;
 }
 
-CRigiBody2DComponent * CSpaceShip::Get2DBody()
+CRigiBody2D * CSpaceShip::Get2DBody()
 {
-	if (GetComponent<CRigiBody2DComponent>())
+	if (GetComponent<CRigiBody2D>())
 	{
-		return GetComponent<CRigiBody2DComponent>();
+		return GetComponent<CRigiBody2D>();
 	}
 	else
 	{

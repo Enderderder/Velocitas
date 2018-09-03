@@ -5,8 +5,8 @@
 // Inlcude the game classes
 #include "Game/GameClasses.h"
 #include "Engine/Camera.h"
-#include "Engine/RigidBody2DComponent.h"
-#include "Engine/SpriteRenderComponent.h"
+#include "Engine/RigidBody2D.h"
+#include "Engine/SpriteRender.h"
 #include "Engine/AssetMgr.h"
 void CTestScene::InitailizeScene()
 {
@@ -37,9 +37,9 @@ void CTestScene::InitailizeScene()
 		obj->InitializeObject();
 	}
 	//spaceShip2->GetComponent<CSpriteRenderComponent>()->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
-	spaceShip->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_dynamicBody, true, true, 1.0f, 0.0f, 1);
+	spaceShip->GetComponent<CRigiBody2D>()->CreateBody(GetWorld(), b2_dynamicBody, true, true, 1.0f, 0.0f, 1);
 	spaceShip2->m_transform.position = glm::vec3(100.0f, 100.0f, 0.0f);
-	spaceShip2->GetComponent<CRigiBody2DComponent>()->CreateBody(GetWorld(), b2_staticBody, true, true, 1.0f, 0.0f, 0);
+	spaceShip2->GetComponent<CRigiBody2D>()->CreateBody(GetWorld(), b2_staticBody, true, true, 1.0f, 0.0f, 0);
 }
 
 void CTestScene::UpdateScene(float _tick)

@@ -1,17 +1,17 @@
 
 // This Include
-#include "RigidBody2DComponent.h"
+#include "RigidBody2D.h"
 
 // Engine Include
 #include "SceneMgr.h"
 #include "Scene.h"
 #include "GameObject.h"
 #include "Debug.h"
-#include "SpriteRenderComponent.h"
+#include "SpriteRender.h"
 #include "Sprite.h"
 
 
-CRigiBody2DComponent::CRigiBody2DComponent() :
+CRigiBody2D::CRigiBody2D() :
 	m_bodyType(b2_dynamicBody),
 	m_bCanRotate(true),
 	m_bHasFixture(true),
@@ -20,12 +20,12 @@ CRigiBody2DComponent::CRigiBody2DComponent() :
 	m_fixtureType(0)
 {}
 
-CRigiBody2DComponent::~CRigiBody2DComponent()
+CRigiBody2D::~CRigiBody2D()
 {
 
 }
 
-void CRigiBody2DComponent::Update(float _tick)
+void CRigiBody2D::Update(float _tick)
 {
 	if (m_body)
 	{
@@ -33,24 +33,24 @@ void CRigiBody2DComponent::Update(float _tick)
 	}
 }
 
-void CRigiBody2DComponent::BeginPlay()
+void CRigiBody2D::BeginPlay()
 {
 	//CreateBody();
 	//CreateBody(CSceneMgr::GetInstance()->GetRunningScene()->GetWorld(), )
 }
 
-void CRigiBody2DComponent::OnDestroy()
+void CRigiBody2D::OnDestroy()
 {
 
 }
 
-b2Body * CRigiBody2DComponent::GetBody()
+b2Body * CRigiBody2D::GetBody()
 {
 	return m_body;
 }
 
 
-void CRigiBody2DComponent::CreateBody()
+void CRigiBody2D::CreateBody()
 {
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
@@ -74,12 +74,12 @@ void CRigiBody2DComponent::CreateBody()
 	// Define another box shape for our dynamic body
 	b2PolygonShape dynamicBox;
 
-
+	b2FixtureDef fixtureDef;
 
 	/// ====================================================================================
 }
 
-void CRigiBody2DComponent::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
+void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
 	m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 	// Define the dynamic body. We set its position and call the body factory.
@@ -91,10 +91,10 @@ void CRigiBody2DComponent::CreateBody(b2World* _world, b2BodyType BodyType, bool
 	m_body->SetFixedRotation(!bCanRotate);
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;
-	if (GetOwner()->GetComponent<CSpriteRenderComponent>())
+	if (GetOwner()->GetComponent<CSpriteRender>())
 	{
-		dynamicBox.SetAsBox(GetOwner()->GetComponent<CSpriteRenderComponent>()->GetSprite()->GetWidth() / 2.0f,
-			GetOwner()->GetComponent<CSpriteRenderComponent>()->GetSprite()->GetWidth() / 2.0f);
+		dynamicBox.SetAsBox(GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT,
+			GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT);
 		if (bHasFixture)
 		{
 			// Define the dynamic body fixture.
@@ -133,7 +133,7 @@ void CRigiBody2DComponent::CreateBody(b2World* _world, b2BodyType BodyType, bool
 	}
 }
 
-void CRigiBody2DComponent::SetBodyType(b2BodyType _bodyType)
+void CRigiBody2D::SetBodyType(b2BodyType _bodyType)
 {
 	m_bodyType = _bodyType;
 	if (m_body)
@@ -142,12 +142,12 @@ void CRigiBody2DComponent::SetBodyType(b2BodyType _bodyType)
 	}
 }
 
-b2BodyType CRigiBody2DComponent::GetBodyType() const
+b2BodyType CRigiBody2D::GetBodyType() const
 {
 	return m_bodyType;
 }
 
-void CRigiBody2DComponent::SetCanRotate(bool _b)
+void CRigiBody2D::SetCanRotate(bool _b)
 {
 	m_bCanRotate = _b;
 	if (m_body)
@@ -156,12 +156,12 @@ void CRigiBody2DComponent::SetCanRotate(bool _b)
 	}
 }
 
-bool CRigiBody2DComponent::GetCanRotate() const
+bool CRigiBody2D::GetCanRotate() const
 {
 	return m_bCanRotate;
 }
 
-void CRigiBody2DComponent::SetHasFixture(bool _b)
+void CRigiBody2D::SetHasFixture(bool _b)
 {
 	m_bHasFixture = _b;
 	if (m_body)
@@ -177,7 +177,7 @@ void CRigiBody2DComponent::SetHasFixture(bool _b)
 	}
 }
 
-bool CRigiBody2DComponent::GetHasFixture() const
+bool CRigiBody2D::GetHasFixture() const
 {
 	return m_bHasFixture;
 }
