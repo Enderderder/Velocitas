@@ -115,12 +115,13 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	glm::vec3 scale = _transform.scale;
 	glm::vec3 rotation = _transform.rotation;
 
+	//std::cout << position.x << " :: " << position.y << std::endl;
+
 
 	glm::mat4 objTranslate = glm::translate(glm::mat4(), position);
 	glm::mat4 objScale = glm::scale(glm::mat4(), scale);
-	glm::mat4 objRotation = glm::rotate(glm::mat4(), glm::radians(rotation.x), glm::vec3(1.0, 0.0, 0.0));
-	objRotation = glm::rotate(objRotation, glm::radians(rotation.y), glm::vec3(0.0, 1.0, 0.0));
-	objRotation = glm::rotate(objRotation, glm::radians(rotation.z), glm::vec3(0.0, 0.0, 1.0));
+	glm::mat4 objRotation = glm::rotate(glm::mat4(), glm::radians(rotation.z), glm::vec3(0.0, 0.0, 1.0));
+
 	glm::mat4 model = objTranslate * objRotation * objScale;
 	
 	glm::mat4 MVP = _camera->GetProj() * _camera->GetView() * model;
@@ -135,4 +136,14 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindVertexArray(0);
 	glUseProgram(0);
+}
+
+int CSprite::GetHeight()
+{
+	return m_iHeight;
+}
+
+int CSprite::GetWidth()
+{
+	return m_iWidth;
 }

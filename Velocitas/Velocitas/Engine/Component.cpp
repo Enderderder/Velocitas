@@ -5,14 +5,14 @@ CComponent::CComponent() {}
 
 CComponent::~CComponent() {}
 
-void CComponent::SetGameObject(CGameObject* _gameObject)
+void CComponent::SetOwner(CGameObject* _gameObject)
 {
-	this->m_gameObject = _gameObject;
+	this->m_owner = _gameObject;
 }
 
-CGameObject* CComponent::GetGameObject() const
+CGameObject* CComponent::GetOwner() const
 {
-	return m_gameObject;
+	return m_owner;
 }
 
 void CComponent::SetActive(bool _b)

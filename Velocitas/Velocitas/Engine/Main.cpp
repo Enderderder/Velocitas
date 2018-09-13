@@ -37,8 +37,7 @@ int main(int argc, char **argv)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	// Set Clear Screen Color
-	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
+	
 
 	// Initialize OpenGL Library
 	glewInit();
@@ -67,7 +66,7 @@ void InititializeProgram()
 	p_Time->Initialize();
 	p_Asset->InitializeAssets();
 	p_SceneMgr->InitializeScenes();
-
+	CInput::GetInstance()->InitializeInput();
 	//m_pSound.PlaySound();
 	//cInputMgr->InitializeInput();
 	//CAssetMgr::GetInstance()->InitializeAssets();
@@ -89,6 +88,8 @@ void InititializeProgram()
 
 void Render()
 {
+	// Set Clear Screen Color
+	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
 	p_SceneMgr->RenderCurrentScene();
 
 	//g_FPSLabel->RenderTextLabel();
@@ -101,7 +102,8 @@ void Update()
 	p_Time->Update();
 
 	// Update whats currently running
-	p_SceneMgr->UpdateCurrentScene();
+	CInput::GetInstance()->Update(p_Time->GetTick());
+	p_SceneMgr->UpdateCurrentScene(p_Time->GetTick());
 
 	// Full Screen Control
 	//if (cInputMgr->g_cKeyState[(unsigned char)'f'] == INPUT_FIRST_PRESS)

@@ -7,8 +7,11 @@ class CTestScene : public CScene
 public:
 
 	virtual void InitailizeScene() override;
+	virtual void UpdateScene(float _tick) override;
 
 private:
+
+
 
 
 };

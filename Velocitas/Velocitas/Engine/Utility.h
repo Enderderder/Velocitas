@@ -9,7 +9,8 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 #include <fmod.hpp>
-//#include <Box2D/Box2D.h>
+#include <Box2D.h>
+#include <glm/common.hpp>
 
 // Library Include -----------------------------------------------------------------------------
 #include <iostream>
@@ -18,7 +19,6 @@
 #include <vector>
 #include <map>
 #include <chrono>
-#include <WS2tcpip.h>
 #include <strstream>
 #include <Windows.h>
 #include <cassert>
@@ -86,7 +86,13 @@ enum InputMouse
 };
 
 //----------------------------------------------------------------------------------------------
-
+struct Transform
+{
+	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 rotation = glm::vec3(0.0f,0.0f,0.0f);
+	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+};
 
 
 #endif // !_UTILITY_H

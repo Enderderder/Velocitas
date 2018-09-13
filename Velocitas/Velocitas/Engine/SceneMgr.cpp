@@ -45,14 +45,13 @@ void CSceneMgr::InitializeScenes()
 void CSceneMgr::RenderCurrentScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	m_runningScene->RenderScene();
 }
 
-void CSceneMgr::UpdateCurrentScene()
+void CSceneMgr::UpdateCurrentScene(float _tick)
 {
 	// Only Proccess the current running scene
-	m_runningScene->UpdateScene();
+	m_runningScene->UpdateScene(_tick);
 }
 
 void CSceneMgr::CreateNewScene(std::string _name, CScene* _scene)

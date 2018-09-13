@@ -1,22 +1,14 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-// Global Includes
+// Global Include
 #include "Utility.h"
 
 // Forward Declare
 class CGameObject;
 class CComponent;
-struct Trasform;
 
 // Declare a Transform struct
-struct Transform
-{
-	CGameObject* gameObject = nullptr;
-	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
-};
 
 class CGameObject
 {
@@ -45,7 +37,7 @@ public:
 	/*
 	 * Call every frame
 	 */
-	virtual void Update();
+	virtual void Update(float _tick);
 	/**
 	* Try get the component of the gameobject
 	*/
@@ -83,16 +75,14 @@ template<typename T>
 T* CGameObject::CreateComponent()
 {
 	CComponent* newComponent = new T();
-	newComponent->SetGameObject(this);
+	newComponent->SetOwner(this);
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 
 	if (resultComponent != nullptr)
 	{
-		std::cout << "component pushed" << std::endl;
 		m_components.push_back(resultComponent);
 	}
-
 
 	return resultComponent;
 }
