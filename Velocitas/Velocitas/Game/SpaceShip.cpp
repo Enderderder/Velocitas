@@ -22,10 +22,12 @@ void CSpaceShip::InitializeObject()
 	__super::InitializeObject();
 	
 	/** Set the sprite for the object */
-	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Block"));
+	//m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Player"));
+	
 	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
 
-
+	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Player"));
+	//this->m_transform.scale = glm::vec3(0.5f,0.5f,0.5f);
 	//this->m_transform.scale = glm::vec3(1000.0f, 1000.0f, 1000.0f);
 }
 

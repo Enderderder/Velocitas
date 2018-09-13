@@ -36,6 +36,8 @@ void CAssetMgr::InitializeAssets()
 
 	/** Initialize Sprites */
 	CreateSprite("Block", "Resources/Sprites/Block.png");
+	CreateSprite("Player", "Resources/Sprites/spaceship.png");
+	CreateSprite("Collectable", "Resources/Sprites/collectable.png");
 }
 
 CSprite* CAssetMgr::GetSprite(std::string _name) const

@@ -23,7 +23,7 @@ void Update();
 
 int main(int argc, char **argv)
 {
-	// Set up randon
+	// Set up random
 	srand((unsigned int)time(NULL));
 
 	// Create the window
@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 	glutInitWindowSize(util::SCR_WIDTH, util::SCR_HEIGHT);
 	glutCreateWindow("Velocitas");
 	glEnable(GL_MULTISAMPLE);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// Set Clear Screen Color
 	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
