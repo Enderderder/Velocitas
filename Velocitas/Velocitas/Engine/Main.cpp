@@ -23,7 +23,7 @@ void Update();
 
 int main(int argc, char **argv)
 {
-	// Set up randon
+	// Set up random
 	srand((unsigned int)time(NULL));
 
 	// Create the window
