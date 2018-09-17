@@ -22,7 +22,6 @@
     <Text Include="Engine\Commenting Header.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Blocks.h" />
     <ClInclude Include="Engine\AssetMgr.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\Component.h" />
@@ -42,12 +41,12 @@
     <ClInclude Include="Engine\TextLoader.h" />
     <ClInclude Include="Engine\Time.h" />
     <ClInclude Include="Engine\Utility.h" />
+    <ClInclude Include="Game\Blocks.h" />
     <ClInclude Include="Game\GameClasses.h" />
     <ClInclude Include="Game\SpaceShip.h" />
     <ClInclude Include="Game\TestScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Blocks.cpp" />
     <ClCompile Include="Engine\AssetMgr.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
@@ -67,6 +66,7 @@
     <ClCompile Include="Engine\TextLabel.cpp" />
     <ClCompile Include="Engine\TextLoader.cpp" />
     <ClCompile Include="Engine\Time.cpp" />
+    <ClCompile Include="Game\Blocks.cpp" />
     <ClCompile Include="Game\SpaceShip.cpp" />
     <ClCompile Include="Game\TestScene.cpp" />
   </ItemGroup>

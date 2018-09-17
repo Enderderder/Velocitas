@@ -27,16 +27,8 @@
 
 //#include <vld.h> // Memory Leak Detector
 
-template<typename T>
-std::string ToString(const T& _value)
-{
-	std::strstream theStream;
-	theStream << _value << std::ends;
-	return (theStream.str());
-}
 
 //----------------------------------------------------------------------------------------------
-
 
 namespace util
 {
@@ -70,6 +62,14 @@ struct DebugTimer
 
 };
 
+struct Transform
+{
+	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+};
+
 enum InputState 
 {
 	INPUT_FIRST_RELEASE,	// First frame of Up state 
@@ -86,13 +86,13 @@ enum InputMouse
 };
 
 //----------------------------------------------------------------------------------------------
-struct Transform
-{
-	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 rotation = glm::vec3(0.0f,0.0f,0.0f);
-	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
-};
 
+template<typename T>
+std::string ToString(const T& _value)
+{
+	std::strstream theStream;
+	theStream << _value << std::ends;
+	return (theStream.str());
+}
 
 #endif // !_UTILITY_H

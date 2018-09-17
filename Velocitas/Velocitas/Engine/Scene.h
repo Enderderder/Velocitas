@@ -18,7 +18,7 @@ public:
 
 	virtual void ConfigurateScene();
 	virtual void UpdateScene(float _tick);
-	void BeginPlay();
+	virtual void BeginPlay();
 	void RenderScene();
 	void ResetScene();
 

@@ -40,6 +40,10 @@ void CSceneMgr::InitializeScenes()
 		m_runningScene->ConfigurateScene();
 		m_runningScene->BeginPlay();
 	}
+	else
+	{
+		CDebug::Log("There is no scene builded.");
+	}
 }
 
 void CSceneMgr::RenderCurrentScene()
