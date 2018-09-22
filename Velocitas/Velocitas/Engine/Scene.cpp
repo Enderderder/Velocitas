@@ -3,8 +3,8 @@
 
 // Local Include
 #include "GameObject.h"
-#include "SpriteRenderComponent.h"
-#include "RigidBody2DComponent.h"
+#include "SpriteRender.h"
+#include "RigidBody2D.h"
 #include "Debug.h"
 #include "Camera.h"
 //#include "Player.h"
@@ -46,14 +46,17 @@ CScene::~CScene()
 	std::cout << "Cleaning Done... \n";
 }
 
-void CScene::InitailizeScene() 
+void CScene::ConfigurateScene() 
 { 
 	m_vGameObj.resize(0);
 }
 
 void CScene::BeginPlay()
 {
-
+	for (auto obj : m_vGameObj)
+	{
+		obj->BeginPlay();
+	}
 }
 
 void CScene::RenderScene()
@@ -66,8 +69,8 @@ void CScene::RenderScene()
 		{
 			// GameObject.render()
 
-			if (CSpriteRenderComponent* spriteRenderer
-				= gameObject->GetComponent<CSpriteRenderComponent>())
+			if (CSpriteRender* spriteRenderer
+				= gameObject->GetComponent<CSpriteRender>())
 			{
 				spriteRenderer->Render(m_mainCamera);
 				//continue;
@@ -94,12 +97,14 @@ void CScene::ResetScene()
 
 void CScene::UpdateScene(float _tick)
 {
-	float32 timeStep = 1.0f / 60.0f;	int32 velocityIterations = 6;
+	float32 timeStep = 1.0f / 60.0f;
+	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	if (_tick == 0)
 	{
 		m_box2DWorld->Step(timeStep, velocityIterations, positionIterations);
-	}
+	}
+
 	// Delete the object that should be deleted fron last frame
 	for (auto obj : m_vGameObj)
 	{
@@ -156,13 +161,13 @@ void CScene::UpdateScene(float _tick)
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	m_vGameObj.push_back(_gameobj);
 }
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
 }
@@ -172,7 +177,7 @@ void CScene::Instantiate(CGameObject * _gameobj,
 	glm::vec3 _rotation, 
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f))
 {
-	_gameobj->InitializeObject();
+	_gameobj->BeginPlay();
 	_gameobj->m_transform.position = _pos;
 	_gameobj->m_transform.rotation = _rotation;
 	_gameobj->m_transform.scale = _scale;

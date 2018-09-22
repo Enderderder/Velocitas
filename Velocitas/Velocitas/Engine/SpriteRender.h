@@ -10,19 +10,22 @@
 class CCamera;
 class CSprite;
 
-class CSpriteRenderComponent : public CComponent
+class CSpriteRender : public CComponent
 {
 public:
-	CSpriteRenderComponent();
-	~CSpriteRenderComponent();
+	CSpriteRender();
+	~CSpriteRender();
 
-	virtual void Initialize() override;
+	virtual void BeginPlay() override;
 
 	void Render(CCamera* camera);
 
 	void SetSprite(CSprite* _sprite);
+	void SetSprite(std::string _name);
+
 	void SetProgram(GLuint _programID);
 	CSprite* GetSprite();
+
 private:
 
 	CSprite* m_sprite;

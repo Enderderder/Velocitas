@@ -5,15 +5,16 @@
 // Engine Include
 #include "Engine/AssetMgr.h"
 #include "Engine/Component.h"
-#include "Engine/SpriteRenderComponent.h"
-#include "Engine/RigidBody2DComponent.h"
+#include "Engine/SpriteRender.h"
+#include "Engine/RigidBody2D.h"
 #include "Engine/Input.h"
 #include "Engine/Utility.h"
 
 CSpaceShip::CSpaceShip(int playerID)
 {
-	m_spriteRenderer = CreateComponent<CSpriteRenderComponent>();
-	m_rigidBody = CreateComponent<CRigiBody2DComponent>();
+	m_spriteRenderer = CreateComponent<CSpriteRender>();
+	m_rigidBody = CreateComponent<CRigiBody2D>();
+
 	m_iPlayerID = playerID;
 	bControllerInput = false;
 	m_fCurrentRotation = 0;
@@ -22,15 +23,14 @@ CSpaceShip::CSpaceShip(int playerID)
 CSpaceShip::~CSpaceShip()
 {}
 
-void CSpaceShip::InitializeObject()
+void CSpaceShip::BeginPlay()
 {
-	__super::InitializeObject();
+	__super::BeginPlay();
 	
 	/** Set the sprite for the object */
-	m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Triangle"));
-	m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
-	/** Set RigidBody */
-	
+	//m_spriteRenderer->SetSprite(CAssetMgr::GetInstance()->GetSprite("Triangle"));
+	//m_spriteRenderer->SetProgram(CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram"));
+
 }
 
 void CSpaceShip::Update(float _tick)
@@ -98,11 +98,11 @@ void CSpaceShip::SetIsController(bool _bIsController)
 	bControllerInput = _bIsController;
 }
 
-CRigiBody2DComponent * CSpaceShip::Get2DBody()
+CRigiBody2D * CSpaceShip::Get2DBody()
 {
-	if (GetComponent<CRigiBody2DComponent>())
+	if (GetComponent<CRigiBody2D>())
 	{
-		return GetComponent<CRigiBody2DComponent>();
+		return GetComponent<CRigiBody2D>();
 	}
 	else
 	{
@@ -126,7 +126,7 @@ void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 		b2Vec2 direction = b2Vec2(0.0f, 1.0f);
 		RotateVecotr(direction, m_fCurrentRotation);
 		direction.Normalize();
-		direction *= (float)up * 100000000000000000000000000000000.0f; // 10.0f;
+		direction *= (float)up * 2.0f; // 10.0f;
 		myBody->ApplyForceToCenter(direction, true);
 		this->m_transform.position = glm::vec3(myBody->GetPosition().x, myBody->GetPosition().y, 0.0f);
 		this->m_transform.rotation.z = m_fCurrentRotation;

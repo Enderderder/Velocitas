@@ -33,7 +33,7 @@ public:
 	* Initialize the object
 	* Call right after the scene initialize
 	*/
-	virtual void InitializeObject();
+	virtual void BeginPlay();
 	/*
 	 * Call every frame
 	 */
@@ -75,7 +75,7 @@ template<typename T>
 T* CGameObject::CreateComponent()
 {
 	CComponent* newComponent = new T();
-	newComponent->SetGameObject(this);
+	newComponent->SetOwner(this);
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 

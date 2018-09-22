@@ -37,15 +37,18 @@ void CSceneMgr::InitializeScenes()
 	{
 		auto iter = m_scenes.begin();
 		m_runningScene = iter->second;
-		m_runningScene->InitailizeScene();
+		m_runningScene->ConfigurateScene();
 		m_runningScene->BeginPlay();
+	}
+	else
+	{
+		CDebug::Log("There is no scene builded.");
 	}
 }
 
 void CSceneMgr::RenderCurrentScene()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	m_runningScene->RenderScene();
 }
 
@@ -73,7 +76,7 @@ void CSceneMgr::LoadScene(std::string _name)
 
 			// Assign the runnig scene to the new scene and initiate it
 			m_runningScene = iter->second;
-			m_runningScene->InitailizeScene();
+			m_runningScene->ConfigurateScene();
 			m_runningScene->BeginPlay();
 		}
 	}

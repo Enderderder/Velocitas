@@ -111,12 +111,9 @@ void CSprite::RenderSprite(Transform _transform, CCamera* _camera, GLuint _progr
 	glBindTexture(GL_TEXTURE_2D, m_tex);
 	glUniform1i(glGetUniformLocation(_programID, "tex"), 0);
 
-	glm::vec3 position = _transform.position;
+	glm::vec3 position = _transform.position * (float)util::PIXELUNIT;
 	glm::vec3 scale = _transform.scale;
 	glm::vec3 rotation = _transform.rotation;
-
-	//std::cout << position.x << " :: " << position.y << std::endl;
-
 
 	glm::mat4 objTranslate = glm::translate(glm::mat4(), position);
 	glm::mat4 objScale = glm::scale(glm::mat4(), scale);

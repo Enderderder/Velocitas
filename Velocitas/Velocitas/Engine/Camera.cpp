@@ -49,9 +49,6 @@ void CCamera::SetProjectionMatrix()
 {
 	m_ProjectionMatrix = glm::ortho((float)-(util::SCR_WIDTH / 2), (float)(util::SCR_WIDTH / 2),
 		(float)-(util::SCR_HEIGHT / 2), (float)(util::SCR_HEIGHT / 2), 0.1f, 100.0f);
-
-// 	m_ProjectionMatrix = glm::perspective(45.0f, 
-// 		(float)util::SCR_WIDTH / (float)util::SCR_HEIGHT, 0.1f, 3000.0f);
 }
 
 void CCamera::SetProjectionMatrix(float _fov)

@@ -7,7 +7,7 @@
 
 void CDebug::Log(std::string _info)
 {
-	std::cout << "Debug Log: ";
+	std::cout << "Engine Log: ";
 	std::cout << _info << "\n";
 }
 
