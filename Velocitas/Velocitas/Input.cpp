@@ -16,7 +16,7 @@
 #include "Input.h"
 
 // Local Include
-#include "Utility.h"
+//#include "Utility.h"
 
 // Static Variable
 CInput* CInput::s_pInput = nullptr;
@@ -46,36 +46,36 @@ void CInput::InitializeInput()
 {
 	for (unsigned char i = 0; i < 255; i++)
 	{
-		g_cKeyState[i] = INPUT_RELEASED;
+		//g_cKeyState[i] = INPUT_RELEASED;
 	}
 
-	glutKeyboardFunc(InitKeyDown);
-	glutKeyboardUpFunc(InitKeyUp);
-	glutMouseFunc(InitMouse);
+	//glutKeyboardFunc(InitKeyDown);
+	//glutKeyboardUpFunc(InitKeyUp);
+	//glutMouseFunc(InitMouse);
 }
 
 void CInput::Keyboard_Down(unsigned char key, int x, int y)
 {
-	if (g_cKeyState[key] != INPUT_HOLD && g_cKeyState[key] != INPUT_FIRST_PRESS)
-	{
-		g_cKeyState[key] = INPUT_FIRST_PRESS;
-		return;
-	}
-	else g_cKeyState[key] = INPUT_HOLD;
+	//if (g_cKeyState[key] != INPUT_HOLD && g_cKeyState[key] != INPUT_FIRST_PRESS)
+	//{
+	//	g_cKeyState[key] = INPUT_FIRST_PRESS;
+	//	return;
+	//}
+	//else g_cKeyState[key] = INPUT_HOLD;
 }
 
 
 void CInput::Keyboard_Up(unsigned char key, int x, int y)
 {
-	g_cKeyState[key] = INPUT_RELEASED;
+	//g_cKeyState[key] = INPUT_RELEASED;
 }
 
 void CInput::Mouse(int button, int glutState, int x, int y)
 {
-	if (button < 3)
-	{
-		g_cMouseState[button] = (glutState == GLUT_DOWN) ? INPUT_HOLD : INPUT_RELEASED;
-	}
+	//if (button < 3)
+	//{
+	//	g_cMouseState[button] = (glutState == GLUT_DOWN) ? INPUT_HOLD : INPUT_RELEASED;
+	//}
 }
 
 void CInput::InitKeyDown(unsigned char key, int x, int y)
