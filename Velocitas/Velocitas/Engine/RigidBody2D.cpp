@@ -81,7 +81,7 @@ void CRigiBody2D::CreateBody()
 
 void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
-	m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
+	m_transform.position = GetOwner()->m_transform.position;
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 	bodyDef.type = BodyType;
@@ -93,8 +93,8 @@ void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRota
 	b2PolygonShape dynamicBox;
 	if (GetOwner()->GetComponent<CSpriteRender>())
 	{
-		dynamicBox.SetAsBox(GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT,
-			GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT);
+		dynamicBox.SetAsBox(GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT * GetOwner()->m_transform.scale.x,
+			GetOwner()->GetComponent<CSpriteRender>()->GetSprite()->GetWidth() / 2.0f / util::PIXELUNIT * GetOwner()->m_transform.scale.y);
 		if (bHasFixture)
 		{
 			// Define the dynamic body fixture.

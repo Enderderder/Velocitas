@@ -33,8 +33,8 @@
 namespace util
 {
 	// Define the screen size
-	static int SCR_WIDTH = 1366;
-	static int SCR_HEIGHT = 768;
+	static int SCR_WIDTH = 1600;
+	static int SCR_HEIGHT = 900;
 	static int PIXELUNIT = 40;
 }
 
