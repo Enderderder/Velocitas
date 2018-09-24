@@ -69,9 +69,52 @@ void CRigidBody2D::OnDestroy()
 
 }
 
-b2Body* CRigidBody2D::GetBody()
+b2Body* CRigidBody2D::GetBody() const
 {
 	return m_body;
+}
+
+void CRigidBody2D::CreateCircleFixture(float _friction, float _density = 1.0f, bool _isSenor = false)
+{
+	// Define a circle shape
+	b2CircleShape circleShape;
+	float circleRadius;
+	// Check if there is a sprite renderer component
+	CSpriteRender* spriteRender = GetOwner()->GetComponent<CSpriteRender>();
+	if (spriteRender != nullptr)
+	{
+		// Set the radius to whatever is higher
+		float spriteWidth = spriteRender->GetSprite()->GetWidth();
+		float spriteHeight = spriteRender->GetSprite()->GetHeight();
+		if (spriteWidth >= spriteHeight)
+		{
+			circleRadius = spriteWidth;
+			circleShape.m_radius =
+				(spriteWidth * GetOwner()->m_transform.scale.x / 2.0f) / util::PIXELUNIT;
+		}
+		else
+		{
+			circleRadius = spriteHeight;
+			circleShape.m_radius =
+				(spriteHeight * GetOwner()->m_transform.scale.x / 2.0f) / util::PIXELUNIT;
+		}
+	}
+	else { circleRadius = 1.0f; } // If there is no 
+
+	
+	
+	
+	b2FixtureDef fixtureDef;
+	fixtureDef.friction = _friction;
+	fixtureDef.density = _density;
+	fixtureDef.isSensor = _isSenor;
+
+	m_body->CreateFixture(&fixtureDef);
+}
+
+void CRigidBody2D::CreateBoxFixture(float _friction, float _density, bool _isSenor)
+{
+
 }
 
 void CRigidBody2D::CreateBody()

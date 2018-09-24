@@ -35,10 +35,12 @@ void CSpaceShip::Update(float _tick)
 	MovementChecks();
 	Movement(bLeftPressed, bRightPressed, bUpPressed, bDownPressed);
 
-	glm::vec3 cameraPosition = this->m_transform.position;
-	cameraPosition.z = CSceneMgr::GetInstance()->GetRunningScene()->GetMainCamera()->GetCameraPosition().z;
+	CCamera* mainCamera = CSceneMgr::GetInstance()->GetRunningScene()->GetMainCamera();
 
-	CSceneMgr::GetInstance()->GetRunningScene()->GetMainCamera()->SetCameraPosition(cameraPosition);
+	glm::vec3 cameraPosition = this->m_transform.position;
+	cameraPosition.z = mainCamera->GetCameraPosition().z;
+
+	mainCamera->SetCameraPosition(cameraPosition);
 }
 
 void CSpaceShip::MovementChecks()

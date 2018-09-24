@@ -16,11 +16,11 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Awake() override;
 	virtual void OnDestroy() override;
-	b2Body* GetBody();
+	
+	b2Body* GetBody() const;
 
-	/// Legacy Function
-	//void CreateBody(b2World* _world, b2BodyType BodyType,
-	//bool bCanRotate = true, bool bHasFixture = true, float Density = 1.0f, float Friction = 0.3f, int fixtureType = 0);
+	void CreateCircleFixture(float _friction, float _density, bool _isSenor);
+	void CreateBoxFixture(float _friction, float _density, bool _isSenor);
 
 	void SetBodyType(b2BodyType _bodyType);
 	b2BodyType GetBodyType() const;
