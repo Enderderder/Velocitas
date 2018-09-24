@@ -3,7 +3,7 @@
 CBlocks::CBlocks(int iBlockID)
 {
 	m_spriteRenderer = CreateComponent<CSpriteRender>();
-	m_rigidBody = CreateComponent<CRigiBody2D>();
+	m_rigidBody = CreateComponent<CRigidBody2D>();
 	m_iBlockID = iBlockID;
 }
 

@@ -10,7 +10,7 @@
 #include "Engine/Input.h"
 // Forward Declare
 class CSpriteRender;
-class CRigiBody2D;
+class CRigidBody2D;
 
 class CBlocks : public CGameObject
 {
@@ -19,10 +19,10 @@ public:
 	~CBlocks();
 	virtual void BeginPlay() override;
 	virtual void Update(float _tick) override;
-	CRigiBody2D* Get2DBody();
+	CRigidBody2D* Get2DBody();
 	CSpriteRender* m_spriteRenderer;
 private:
-	CRigiBody2D * m_rigidBody;
+	CRigidBody2D * m_rigidBody;
 	int m_iBlockID;
 	
 };

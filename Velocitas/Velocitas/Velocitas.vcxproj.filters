@@ -85,6 +85,12 @@
     <Filter Include="Game\LevelBlocks">
       <UniqueIdentifier>{e3a7eefd-6c56-423a-974f-0b2e74bdbd2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Box2D_Extend">
+      <UniqueIdentifier>{48471ed2-c624-4f1a-a27b-6f0ba6fcea0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Box2D_Extend\ContactListener">
+      <UniqueIdentifier>{531b1e2e-7047-4cb2-8248-308278827541}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Commenting Header.txt">
@@ -161,6 +167,12 @@
     <ClInclude Include="Engine\SpriteRender.h">
       <Filter>Framework\Component\SpriteRenderComponent</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ContactListener.h">
+      <Filter>Framework\Box2D_Extend\ContactListener</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp">
@@ -228,6 +240,9 @@
     </ClCompile>
     <ClCompile Include="Engine\SpriteRender.cpp">
       <Filter>Framework\Component\SpriteRenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ContactListener.cpp">
+      <Filter>Framework\Box2D_Extend\ContactListener</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
