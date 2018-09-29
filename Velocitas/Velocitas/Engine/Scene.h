@@ -1,5 +1,4 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
 // Global Include
 #include "Utility.h"
@@ -15,7 +14,7 @@ class CScene
 {
 public:
 	CScene();
-	~CScene();
+	virtual ~CScene();
 
 	/**
 	* Create all the gameobject and configure them here
@@ -66,5 +65,3 @@ protected:
 private:
 
 };
-
-#endif // !SCENE_H

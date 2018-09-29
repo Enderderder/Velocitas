@@ -9,14 +9,13 @@ class CRigidBody2D : public CComponent
 public:
 
 	CRigidBody2D();
-	~CRigidBody2D();
+	virtual ~CRigidBody2D();
 
 	virtual void Update(float _tick) override;
 	virtual void LateUpdate(float _tick) override;
 	virtual void BeginPlay() override;
 	virtual void Awake() override;
 	virtual void OnDestroy() override;
-	
 	b2Body* GetBody() const;
 
 	void CreateCircleFixture(float _friction, float _density, bool _isSenor);

@@ -11,7 +11,7 @@ class CSpaceShip : public CGameObject
 {
 public:
 	CSpaceShip(int playerID);
-	~CSpaceShip();
+	virtual ~CSpaceShip();
 
 	virtual void BeginPlay() override;
 	virtual void Update(float _tick) override;

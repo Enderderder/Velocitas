@@ -11,7 +11,7 @@ class CGameObject
 {
 public:
 	CGameObject();
-	~CGameObject();
+	virtual ~CGameObject();
 
 	// Properties
 	Tag m_tag;
@@ -47,6 +47,10 @@ public:
 	* Call when the Collision ends
 	*/
 	virtual void OnCollisionEnd(CGameObject* _other);
+	/**
+	* If the GameObject has a fixture that got clicked by mouse
+	*/
+	virtual void OnMouseDown();
 
 	/**
 	* Creates a component and push to the vector

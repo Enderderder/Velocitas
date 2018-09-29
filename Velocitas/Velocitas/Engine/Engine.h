@@ -11,6 +11,7 @@
 #include "RigidBody2D.h"
 #include "MeshComponent.h"
 
+// Core Classes
 #include "Scene.h"
 #include "Camera.h"
 #include "GameObject.h"
@@ -18,8 +19,11 @@
 #include "ShaderLoader.h"
 #include "TextLabel.h"
 #include "TextLoader.h"
+
+// Box2D Extension Classes
 #include "ContactListener.h"
 
+// Utility Classes
 #include "Input.h"
 #include "CXBOXController.h"
 #include "Time.h"

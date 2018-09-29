@@ -91,7 +91,7 @@ void CScene::UpdateScene(float _tick)
 	}
 
 	// Box2D Step
-	float32 timeStep = 1.0f / 60.0f;
+	float32 timeStep = CTime::GetInstance()->GetDeltaTime();
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	if (_tick == 0)
@@ -114,43 +114,6 @@ void CScene::UpdateScene(float _tick)
 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
 	}
 }
-
-/* Legacy code */
-// void CScene::CheckCollision()
-// {
-// 	size_t currVecSize = m_vGameObj.size();
-// 	for (size_t index = 0; index < currVecSize; ++index)
-// 	{
-// 		if (m_vGameObj[index]->HasCollider()) // Check if object itself has a collider
-// 		{
-// 			// Get the collistion detail of the object
-// 			float selfCollider = m_vGameObj[index]->GetCollisionRad();
-// 			glm::vec3 selfPos = m_vGameObj[index]->GetTransform();
-// 
-// 			// Check with all the rest of the other objects
-// 			for (size_t i = index + 1; i < currVecSize; ++i)
-// 			{
-// 				if (m_vGameObj[i]->HasCollider())
-// 				{
-// 					// Get the other objects' collision detail
-// 					float otherCollider = m_vGameObj[i]->GetCollisionRad();
-// 					glm::vec3 otherPos = m_vGameObj[i]->GetTransform();
-// 
-// 					float distance = glm::distance(selfPos, otherPos);
-// 					if (distance <= (selfCollider + otherCollider))
-// 					{
-// 						m_vGameObj[index]->OnCollision(m_vGameObj[i]);
-// 						m_vGameObj[i]->OnCollision(m_vGameObj[index]);
-// 					}
-// 				}
-// 			}
-// 		}
-// 		
-// 
-// 
-// 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
-// 	}
-// }
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {

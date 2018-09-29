@@ -26,7 +26,9 @@ void CRigidBody2D::Update(float _tick)
 		owner->m_transform.position =
 			glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, owner->m_transform.position.z);
 		owner->m_transform.rotation =
-			glm::vec3(0.0f, 0.0f, (float)util::ToDeg(m_body->GetAngle()));
+			glm::vec3(owner->m_transform.rotation.x,
+				owner->m_transform.rotation.y,
+				util::ToDeg(m_body->GetAngle()));
 	}
 }
 
@@ -52,14 +54,18 @@ void CRigidBody2D::BeginPlay()
 {
 	__super::BeginPlay();
 
-	//CreateBody();
-	//CreateBody(CSceneMgr::GetInstance()->GetRunningScene()->GetWorld(), )
+	// Set the body transform to the gameobject transform at the beginning
+	Transform ownerTransform = GetOwner()->m_transform;
+	b2Vec2 position = b2Vec2(ownerTransform.position.x, ownerTransform.position.y);
+	float32 rotationDeg = (float32)ownerTransform.rotation.z;
+	m_body->SetTransform(position, util::ToRad(rotationDeg));
 }
 
 void CRigidBody2D::Awake()
 {
 	__super::Awake();
 
+	// Create the body into the world
 	CreateBody();
 }
 
@@ -137,6 +143,10 @@ void CRigidBody2D::CreateBody()
 
 	// Set if the body can be rotate or not
 	m_body->SetFixedRotation(!m_bCanRotate);
+
+	// Set the body damping
+	m_body->SetAngularDamping(0.0f);
+	m_body->SetLinearDamping(0.0f);
 
 	// At the end, Set the body component into UserData for collision listening
 	m_body->SetUserData(this);

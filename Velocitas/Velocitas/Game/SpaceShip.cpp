@@ -1,6 +1,6 @@
 
-// This Include
-#include "SpaceShip.h"
+// Game Class Include
+#include "GameClasses.h"
 
 // Engine Include
 #include "Engine/Engine.h"
@@ -107,7 +107,7 @@ void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 	b2Vec2 direction = b2Vec2(0.0f, 1.0f);
 	RotateVecotr(direction, m_fCurrentRotation);
 	direction.Normalize();
-	direction *= (float)up * 2.0f; // 10.0f;
+	direction *= (float)up * 0.02f; // 10.0f;
 	myBody->ApplyForceToCenter(direction, true);
 	this->m_transform.rotation.z = m_fCurrentRotation;
 

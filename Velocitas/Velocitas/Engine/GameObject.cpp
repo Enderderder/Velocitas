@@ -99,6 +99,11 @@ void CGameObject::OnCollisionEnter(CGameObject* _other)
 void CGameObject::OnCollisionEnd(CGameObject* _other)
 {}
 
+void CGameObject::OnMouseDown()
+{
+	CDebug::Log("Object On Click: " + m_name);
+}
+
 void CGameObject::DestroyObject()
 {
 	this->m_ShouldDestroyed = true;
