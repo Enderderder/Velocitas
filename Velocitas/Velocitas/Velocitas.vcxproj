@@ -25,8 +25,10 @@
     <ClInclude Include="Engine\AssetMgr.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\ContactListener.h" />
     <ClInclude Include="Engine\CXBOXController.h" />
     <ClInclude Include="Engine\Debug.h" />
+    <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\MeshComponent.h" />
@@ -50,6 +52,7 @@
     <ClCompile Include="Engine\AssetMgr.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
+    <ClCompile Include="Engine\ContactListener.cpp" />
     <ClCompile Include="Engine\CXBOXController.cpp" />
     <ClCompile Include="Engine\Debug.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />

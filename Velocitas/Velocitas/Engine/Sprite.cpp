@@ -10,7 +10,7 @@
 CSprite::CSprite() {}
 CSprite::~CSprite() {}
 
-void CSprite::CreateSprite(const char* _filePath /**  , GLuint _programID */)
+void CSprite::CreateSprite(const char* _filePath)
 {
 // 	GLuint program = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
 // 	glUseProgram(program);

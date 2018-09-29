@@ -1,20 +1,6 @@
-//
-// Bachelor of Software Engineering
-// Media Design School
-// Auckland
-// New Zealand
-//
-// (c) 2018 Media Design School
-//
-// File Name    : Input.cpp
-// Description	: 
-// Author       : Richard Wulansari & Jacob Dewse
-// Mail         : richard.wul7481@mediadesign.school.nz, jacob.dew7364@mediadesign.school.nz
-//
 
 // This Include 
-#include "Input.h"
-
+#include "Engine.h"
 
 // Static Variable
 CInput* CInput::s_pInput = nullptr;
@@ -40,16 +26,23 @@ void CInput::DestroyInstance()
 	s_pInput = nullptr;
 }
 
+
 void CInput::InitializeInput()
 {
 	for (unsigned char i = 0; i < 255; i++)
 	{
 		g_cKeyState[i] = INPUT_RELEASED;
 	}
+	for (unsigned char i = 0; i < 3; i++)
+	{
+		g_cMouseState[i] = INPUT_RELEASED;
+	}
 
 	glutKeyboardFunc(InitKeyDown);
 	glutKeyboardUpFunc(InitKeyUp);
 	glutMouseFunc(InitMouse);
+	glutMotionFunc(InitMouseMotion);
+	glutPassiveMotionFunc(InitMouseMotion);
 
 	Players.push_back(new XBOXController(1));
 	Players.push_back(new XBOXController(2));
@@ -67,7 +60,6 @@ void CInput::Keyboard_Down(unsigned char key, int x, int y)
 	else g_cKeyState[key] = INPUT_HOLD;
 }
 
-
 void CInput::Keyboard_Up(unsigned char key, int x, int y)
 {
 	g_cKeyState[key] = INPUT_RELEASED;
@@ -75,10 +67,40 @@ void CInput::Keyboard_Up(unsigned char key, int x, int y)
 
 void CInput::Mouse(int button, int glutState, int x, int y)
 {
+	// If one of the button fire
 	if (button < 3)
 	{
-		g_cMouseState[button] = (glutState == GLUT_DOWN) ? INPUT_HOLD : INPUT_RELEASED;
+		if (glutState == GLUT_DOWN && g_cMouseState[button] == INPUT_RELEASED)
+		{
+			g_cMouseState[button] = INPUT_FIRST_PRESS;
+		}
+		else if (glutState == GLUT_DOWN && g_cMouseState[button] == INPUT_FIRST_PRESS)
+		{
+			g_cMouseState[button] = INPUT_HOLD;
+		}
+		else if (glutState == GLUT_UP)
+		{
+			g_cMouseState[button] = INPUT_RELEASED;
+		}
 	}
+}
+
+void CInput::MouseMotion(int x, int y)
+{
+	/// Set the mouse position
+	// Get the mouse position in unit
+	b2Vec2 mousePosition = b2Vec2((float32)x, (float32)y);;
+	mousePosition *= (1 / (float32)util::PIXELUNIT);
+	// Get the screen size in unit
+	b2Vec2 ScreenUnitSize =
+		b2Vec2((float32)util::SCR_WIDTH, (float32)util::SCR_HEIGHT);
+	ScreenUnitSize *= (1 / (float32)util::PIXELUNIT);
+	// Calculate the offset
+	float32 XOffset = ScreenUnitSize.x / (float32)2.0f;
+	float32 YOffset = ScreenUnitSize.y / (float32)2.0f;
+	// Put the screen offset on to convert between OpenGL coord and Box2D coord
+	g_mousePosition.x = mousePosition.x - XOffset;
+	g_mousePosition.y = -(mousePosition.y - YOffset);
 }
 
 void CInput::InitKeyDown(unsigned char key, int x, int y)
@@ -96,6 +118,11 @@ void CInput::InitMouse(int button, int glutState, int x, int y)
 	CInput::GetInstance()->Mouse(button, glutState, x, y);
 }
 
+void CInput::InitMouseMotion(int x, int y)
+{
+	CInput::GetInstance()->MouseMotion(x, y);
+}
+
 void CInput::Update(float _tick)
 {
 	for (auto& player : Players)
@@ -103,5 +130,23 @@ void CInput::Update(float _tick)
 		player->Update();
 	}
 
-		
+	RefreshKeys();
+}
+
+void CInput::RefreshKeys()
+{
+	for (unsigned char i = 0; i < 255; i++)
+	{
+		if (g_cKeyState[i] == INPUT_FIRST_PRESS)
+		{
+			g_cKeyState[i] = INPUT_HOLD;
+		}
+	}
+	for (unsigned char i = 0; i < 3; i++)
+	{
+		if (g_cMouseState[i] == INPUT_FIRST_PRESS)
+		{
+			g_cMouseState[i] = INPUT_HOLD;
+		}
+	}
 }

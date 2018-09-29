@@ -3,9 +3,6 @@
 // Derive Include
 #include "Component.h"
 
-// Global Include
-#include "Utility.h"
-
 // Forward Declare
 class CCamera;
 class CSprite;
@@ -14,7 +11,7 @@ class CSpriteRender : public CComponent
 {
 public:
 	CSpriteRender();
-	~CSpriteRender();
+	virtual ~CSpriteRender();
 
 	virtual void BeginPlay() override;
 
@@ -24,6 +21,7 @@ public:
 	void SetSprite(std::string _name);
 
 	void SetProgram(GLuint _programID);
+	void SetProgram(std::string _name);
 	CSprite* GetSprite();
 
 private:

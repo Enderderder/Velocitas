@@ -1,19 +1,14 @@
 
-// This Include
-#include "SpaceShip.h"
+// Game Class Include
+#include "GameClasses.h"
 
 // Engine Include
-#include "Engine/AssetMgr.h"
-#include "Engine/Component.h"
-#include "Engine/SpriteRender.h"
-#include "Engine/RigidBody2D.h"
-#include "Engine/Input.h"
-#include "Engine/Utility.h"
+#include "Engine/Engine.h"
 
 CSpaceShip::CSpaceShip(int playerID)
 {
 	m_spriteRenderer = CreateComponent<CSpriteRender>();
-	m_rigidBody = CreateComponent<CRigiBody2D>();
+	m_rigidBody = CreateComponent<CRigidBody2D>();
 
 	m_iPlayerID = playerID;
 	bControllerInput = false;
@@ -37,14 +32,15 @@ void CSpaceShip::Update(float _tick)
 {
 	__super::Update(_tick);
 
-	//CInput::GetInstance()->g_cKeyState[]
-	b2Body* myBody = Get2DBody()->GetBody();
 	MovementChecks();
-	if (myBody)
-	{
-		Movement(bLeftPressed, bRightPressed, bUpPressed, bDownPressed);
-	}
-	//Camera::GetInstance()->SetCameraPos(Position);
+	Movement(bLeftPressed, bRightPressed, bUpPressed, bDownPressed);
+
+	CCamera* mainCamera = CSceneMgr::GetInstance()->GetRunningScene()->GetMainCamera();
+
+	glm::vec3 cameraPosition = this->m_transform.position;
+	cameraPosition.z = mainCamera->GetCameraPosition().z;
+
+	mainCamera->SetCameraPosition(cameraPosition);
 }
 
 void CSpaceShip::MovementChecks()
@@ -98,18 +94,6 @@ void CSpaceShip::SetIsController(bool _bIsController)
 	bControllerInput = _bIsController;
 }
 
-CRigiBody2D * CSpaceShip::Get2DBody()
-{
-	if (GetComponent<CRigiBody2D>())
-	{
-		return GetComponent<CRigiBody2D>();
-	}
-	else
-	{
-		return nullptr;
-	}
-}
-
 void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 {
 	float Right = 0;
@@ -119,18 +103,14 @@ void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 	if (bUp) { up++; };
 	if (bDown) { up -= 0.5f; };
 	m_fCurrentRotation += Right;
-	b2Body* myBody = Get2DBody()->GetBody();
-	if (myBody)
-	{
-		myBody->SetTransform(myBody->GetPosition(), (m_fCurrentRotation / 180 * b2_pi));
-		b2Vec2 direction = b2Vec2(0.0f, 1.0f);
-		RotateVecotr(direction, m_fCurrentRotation);
-		direction.Normalize();
-		direction *= (float)up * 2.0f; // 10.0f;
-		myBody->ApplyForceToCenter(direction, true);
-		this->m_transform.position = glm::vec3(myBody->GetPosition().x, myBody->GetPosition().y, 0.0f);
-		this->m_transform.rotation.z = m_fCurrentRotation;
-	}
+	b2Body* myBody = GetComponent<CRigidBody2D>()->GetBody();
+	b2Vec2 direction = b2Vec2(0.0f, 1.0f);
+	RotateVecotr(direction, m_fCurrentRotation);
+	direction.Normalize();
+	direction *= (float)up * 0.02f; // 10.0f;
+	myBody->ApplyForceToCenter(direction, true);
+	this->m_transform.rotation.z = m_fCurrentRotation;
+
 	return;
 }
 

@@ -1,5 +1,4 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#pragma once
 
 // Global Include
 #include "Utility.h"
@@ -8,24 +7,22 @@
 class CGameObject;
 class CComponent;
 
-// Declare a Transform struct
-
 class CGameObject
 {
 public:
 	CGameObject();
-	~CGameObject();
+	virtual ~CGameObject();
 
 	// Properties
-	std::string m_tag;
+	Tag m_tag;
 	std::string m_name;
 	Transform m_transform;
 
 protected:
-	
+
 	bool m_ShouldDestroyed;
 	bool m_isActive;
-	
+
 	std::vector<CComponent*> m_components;
 
 public:
@@ -35,47 +32,62 @@ public:
 	*/
 	virtual void BeginPlay();
 	/*
-	 * Call every frame
-	 */
+	* Call every frame
+	*/
 	virtual void Update(float _tick);
+	/*
+	* Call every frame after the Update of all the objects
+	*/
+	virtual void LateUpdate(float _tick);
+	/*
+	* Call when the Collision happens
+	*/
+	virtual void OnCollisionEnter(CGameObject* _other);
+	/*
+	* Call when the Collision ends
+	*/
+	virtual void OnCollisionEnd(CGameObject* _other);
+	/**
+	* If the GameObject has a fixture that got clicked by mouse
+	*/
+	virtual void OnMouseDown();
+
+	/**
+	* Creates a component and push to the vector
+	*/
+	template<typename T>
+	T* CreateComponent();
 	/**
 	* Try get the component of the gameobject
 	*/
 	template<typename T>
 	T* GetComponent() const;
 	/*
-	 *Check if the object should be destroyed on thie frame
-	 */
+	*Check if the object should be destroyed on thie frame
+	*/
 	bool ShouldDestroyed() const;
 	/*
-	 *Destroy current gameobject and set it to inactive 
-	 *of the garbage cleaning next frame
-	 */
+	*Destroy current gameobject and set it to inactive
+	*of the garbage cleaning next frame
+	*/
 	void DestroyObject();
-    /*
-	 *Check if the obejct is active which determent it should update or not
-	 */
+	/*
+	*Check if the obejct is active which determent it should update or not
+	*/
 	bool IsActive() const;
 	/*
-	 *Set active state for a object
-	 */
+	*Set active state for a object
+	*/
 	void SetActive(bool);
-
-protected:
-	
-	/**
-	 * Creates a component and push to the vector
-	 */
-	template<typename T>
-	T* CreateComponent();
-
 };
 
+/** Template function implementation */
 template<typename T>
 T* CGameObject::CreateComponent()
 {
 	CComponent* newComponent = new T();
 	newComponent->SetOwner(this);
+	newComponent->Awake();
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 
@@ -86,7 +98,6 @@ T* CGameObject::CreateComponent()
 
 	return resultComponent;
 }
-
 template<typename T>
 T* CGameObject::GetComponent() const
 {
@@ -102,5 +113,3 @@ T* CGameObject::GetComponent() const
 
 	return nullptr;
 }
-
-#endif // !GAMEOBJECT_H

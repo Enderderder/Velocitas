@@ -14,25 +14,29 @@ public:
 
 protected:
 
-	CGameObject* m_owner;
+	/** The gameobject that owns this component */
+	CGameObject * m_owner;
+	/** Is this component active? */
 	bool m_isActive;
 
-// Membre Funciton
 public:
+	// Membre Funciton
 
-	virtual void Update(float _tick) {}
+	virtual void Awake() {}
 	virtual void BeginPlay() {}
 	virtual void OnDestroy() {}
+	virtual void Update(float _tick) {}
+	virtual void LateUpdate(float _tick) {}
 
 	/**
-	 * Getter and setter of the "owner" property of the component
-	 */
+	* Getter and setter of the "owner" property of the component
+	*/
 	void SetOwner(CGameObject* _gameObject);
 	CGameObject* GetOwner() const;
 
 	/**
-	 * Getter and setter of the "active" property of the component
-	 */
+	* Getter and setter of the "active" property of the component
+	*/
 	void SetActive(bool);
 	bool IsActive() const;
 };

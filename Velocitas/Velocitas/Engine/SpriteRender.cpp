@@ -1,10 +1,6 @@
-// This include
-#include "SpriteRender.h"
 
-// Local Include
-#include "GameObject.h"
-#include "Sprite.h"
-#include "AssetMgr.h"
+// Engine Include
+#include "Engine.h"
 
 CSpriteRender::CSpriteRender() 
 {
@@ -44,6 +40,11 @@ void CSpriteRender::SetSprite(std::string _name)
 void CSpriteRender::SetProgram(GLuint _programID)
 {
 	m_programID = _programID;
+}
+
+void CSpriteRender::SetProgram(std::string _name)
+{
+	m_programID = CAssetMgr::GetInstance()->GetProgramID(_name);
 }
 
 CSprite* CSpriteRender::GetSprite()

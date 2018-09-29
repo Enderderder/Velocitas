@@ -3,7 +3,11 @@
 
 CComponent::CComponent() {}
 
-CComponent::~CComponent() {}
+CComponent::~CComponent() 
+{
+	// Set the owner gameobject to null pointer
+	m_owner = nullptr;
+}
 
 void CComponent::SetOwner(CGameObject* _gameObject)
 {

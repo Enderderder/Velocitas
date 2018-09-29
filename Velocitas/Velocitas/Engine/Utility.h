@@ -1,5 +1,4 @@
-#ifndef UTILITY_H
-#define UTILITY_H
+#pragma once
 
 // OpenGL Include ------------------------------------------------------------------------------
 #include <glew.h>
@@ -11,6 +10,8 @@
 #include <fmod.hpp>
 #include <Box2D.h>
 #include <glm/common.hpp>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 // Library Include -----------------------------------------------------------------------------
 #include <iostream>
@@ -27,15 +28,36 @@
 
 //#include <vld.h> // Memory Leak Detector
 
-
 //----------------------------------------------------------------------------------------------
 
 namespace util
 {
 	// Define the screen size
-	static int SCR_WIDTH = 1600;
-	static int SCR_HEIGHT = 900;
-	static int PIXELUNIT = 40;
+	static int SCR_WIDTH = 1366;
+	static int SCR_HEIGHT = 768;
+
+	// Define the Pixel Per Unit
+	static int PIXELUNIT = 50;
+
+	// Useful Functions
+	static float ToRad(float _degree)
+	{
+		return (_degree / 180) * b2_pi;
+	}
+
+	static float ToDeg(float _radian)
+	{
+		return _radian * (180 / b2_pi);
+	}
+
+	template<typename T>
+	static std::string ToString(const T& _value)
+	{
+		std::strstream theStream;
+		theStream << _value << std::ends;
+		return (theStream.str());
+	}
+
 }
 
 // Define Struct -------------------------------------------------------------------------------
@@ -49,12 +71,12 @@ struct DebugTimer
 	{
 		start = std::chrono::high_resolution_clock::now();
 	}
-	
+
 	~DebugTimer()
 	{
 		end = std::chrono::high_resolution_clock::now();
 		duration = end - start;
-		
+
 
 		float ms = duration.count();
 		std::cout << "Debug Timer took " << ms << " ms \n";
@@ -65,12 +87,20 @@ struct DebugTimer
 struct Transform
 {
 	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+	//glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
 };
 
-enum InputState 
+enum Tag
+{
+	Default,
+	Player,
+	UI,
+	Block,
+};
+
+enum InputState
 {
 	INPUT_FIRST_RELEASE,	// First frame of Up state 
 	INPUT_RELEASED,			// Default State (Up) 
@@ -78,21 +108,11 @@ enum InputState
 	INPUT_HOLD,				// Key is held Down 
 };
 
-enum InputMouse 
-{ 
-	MOUSE_LEFT, 
-	MOUSE_MIDDLE, 
-	MOUSE_RIGHT 
+enum InputMouse
+{
+	MOUSE_LEFT,
+	MOUSE_MIDDLE,
+	MOUSE_RIGHT
 };
 
 //----------------------------------------------------------------------------------------------
-
-template<typename T>
-std::string ToString(const T& _value)
-{
-	std::strstream theStream;
-	theStream << _value << std::ends;
-	return (theStream.str());
-}
-
-#endif // !_UTILITY_H

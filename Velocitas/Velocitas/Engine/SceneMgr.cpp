@@ -2,10 +2,11 @@
 // This Include
 #include "SceneMgr.h"
 
-// Local Include
+// Engine Include
 #include "Scene.h"
 #include "Debug.h"
 
+// Build Scene
 #include "Game/TestScene.h"
 
 // Static Variable
@@ -78,6 +79,7 @@ void CSceneMgr::LoadScene(std::string _name)
 			m_runningScene = iter->second;
 			m_runningScene->ConfigurateScene();
 			m_runningScene->BeginPlay();
+			return;
 		}
 	}
 }
@@ -92,9 +94,14 @@ CSceneMgr::CSceneMgr()
 
 CSceneMgr::~CSceneMgr()
 {
-	for (auto iter = m_scenes.begin(); iter != m_scenes.end(); ++iter)
+	// Set the running scene to null pointer
+	m_runningScene = nullptr;
+
+	// Delete all the scene
+	for (const auto &iter : m_scenes)
 	{
-		delete iter->second;
+		delete iter.second;
 	}
+	// Clear the scene map
 	m_scenes.clear();
 }
