@@ -37,11 +37,22 @@ void CAssetMgr::InitializeAssets()
 	/** Initialize Sprites */
 	CreateSprite("DefaultSprite", "Resources/Sprites/DefaultSprite.png");
 	CreateSprite("Triangle", "Resources/Sprites/Player2.png");
-	CreateSprite("Block", "Resources/Sprites/Block.png");
 	CreateSprite("Player", "Resources/Sprites/spaceship.png");
 	CreateSprite("Gate", "Resources/Sprites/gate.png");
 	CreateSprite("Collectable", "Resources/Sprites/collectable.png");
-	
+	CreateSprite("Block", "Resources/Sprites/Block.png");
+	CreateSprite("Block2", "Resources/Sprites/2Block.png");
+	CreateSprite("Block3", "Resources/Sprites/3Block.png");
+	CreateSprite("Block4", "Resources/Sprites/4Block.png");
+	CreateSprite("Block5", "Resources/Sprites/5Block.png");
+	CreateSprite("Block6", "Resources/Sprites/6Block.png");
+	CreateSprite("Block7", "Resources/Sprites/7Block.png");
+	CreateSprite("Block8", "Resources/Sprites/8Block.png");
+	CreateSprite("Block9", "Resources/Sprites/9Block.png");
+	CreateSprite("Block10", "Resources/Sprites/10Block.png");
+	CreateSprite("Block11", "Resources/Sprites/11Block.png");
+
+
 }
 
 
